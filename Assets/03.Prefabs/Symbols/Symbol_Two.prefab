@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 878226a828342ae479ec887c95167082, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  symbolName: 
-  description: 
+  symbolName: "\uC774"
+  symbolDescription: 
   basicDmg: 2
   sprite: {fileID: 21300000, guid: 633568b964e136b4686ca9bf7402783d, type: 3}

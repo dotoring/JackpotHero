@@ -34,9 +34,17 @@ public class PlayerTurnEndState : IBattleState
         {
             battleMgr.ChangeState(new MonsterTurnState());
         }
+        else if (result == 1)
+        {
+            battleMgr.ChangeState(new BattleEndState(true));
+        }
+        else if (result == 2)
+        {
+            battleMgr.ChangeState(new BattleEndState(false));
+        }
         else
         {
-            battleMgr.ChangeState(new BattleEndState());
+            Debug.LogError("wrong battle result");
         }
     }
 }
@@ -60,17 +68,40 @@ public class MonsterTurnEndState : IBattleState
         {
             battleMgr.ChangeState(new TurnStartState());
         }
+        else if (result == 1)
+        {
+            battleMgr.ChangeState(new BattleEndState(true));
+        }
+        else if (result == 2)
+        {
+            battleMgr.ChangeState(new BattleEndState(false));
+        }
         else
         {
-            battleMgr.ChangeState(new BattleEndState());
+            Debug.LogError("wrong battle result");
         }
     }
 }
 
 public class BattleEndState : IBattleState
 {
+    public bool isWin;
+
+    public BattleEndState(bool isWin)
+    {
+        this.isWin = isWin;
+    }
+
     public void OnState(BattleMgr battleMgr)
     {
         Debug.Log("승부 결과에 따른 결과창");
+        if(isWin)
+        {
+            battleMgr.resultPanelWin.SetActive(true);
+        }
+        else
+        {
+            battleMgr.resultPanelLose.SetActive(true);
+        }
     }
 }

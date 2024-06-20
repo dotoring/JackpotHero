@@ -20,7 +20,7 @@ public class SlotMachine : MonoBehaviour
         gameMgr = GameObject.Find("GameMgr").GetComponent<GameMgr>();
 
         //보유 심볼들 가져오기
-        symbols = gameMgr.GetSymbols();
+        symbols = gameMgr.GetPlayerOwnSymbols();
     }
 
     public void RollSlotMachine(BattleMgr battleMgr)
@@ -89,7 +89,7 @@ public class SlotMachine : MonoBehaviour
                     yield return new WaitForSeconds(0.2f);
                     battleMgr.playerAttackEffect.SetActive(true);
                     //퍼펙트 효과 발동
-                    pair.Key.PerfectEffect();
+                    pair.Key.PerfectEffect(battleMgr.targetEnemy);
                     yield return new WaitForSeconds(0.2f);
                     battleMgr.playerAttackEffect.SetActive(false);
                 }
@@ -98,7 +98,7 @@ public class SlotMachine : MonoBehaviour
                     yield return new WaitForSeconds(0.2f);
                     battleMgr.playerAttackEffect.SetActive(true);
                     //중복 효과 발동
-                    pair.Key.DuplicationEffect(pair.Value);
+                    pair.Key.DuplicationEffect(pair.Value, battleMgr.targetEnemy);
                     yield return new WaitForSeconds(0.2f);
                     battleMgr.playerAttackEffect.SetActive(false);
                 }

@@ -16,15 +16,9 @@ public class Condition : MonoBehaviour
     [SerializeField] string description;
     [SerializeField] ConditionType type;
 
-    public void EffectCondition()
+    public virtual void EffectCondition()
     {
         Debug.Log("상태이상 : " + conditionName);
-    }
-
-    public IEnumerator EffectStartCondition()
-    {
-        Debug.Log("상태이상 : " + conditionName);
-        yield return null;
     }
 
     public ConditionType GetConditionType()

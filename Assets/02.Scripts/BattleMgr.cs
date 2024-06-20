@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BattleMgr : MonoBehaviour
@@ -10,7 +11,6 @@ public class BattleMgr : MonoBehaviour
     //플레이어
     public GameObject playerAttackEffect;
     public Dictionary<Condition, int> playerConditions = new Dictionary<Condition, int>();
-
 
     //적 관련 변수들
     public List<GameObject> enemies = new List<GameObject>();
@@ -25,13 +25,48 @@ public class BattleMgr : MonoBehaviour
 
     public IBattleState curState;
 
+    public GameObject resultPanelWin;
+    public GameObject resultPanelLose;
+
+    //보상
+    public GameObject rewardLayout;
+    public GameObject rewardSymbolNodePref;
+    bool isPlayerGotSymbol;
+
+    public int rewardGold;
+
+    public Button nextStageBtn;
+
+    //UI
+    public Text playerHp;
+
+    public GameObject ownSymbolsPanel;
+    public Button symbolsInventoryBtn;
+    public GameObject ownSymbolGridLayout;
+    public GameObject symbolNodePref;
+
+    public Text playerGoldText;
+
+    public Button goldEarnBtn;
+    public Text goldEarnAmountText;
+
     void Start()
     {
         gameMgr = GameObject.Find("GameMgr").GetComponent<GameMgr>();
 
+        SpawnEnemy();
+        GenerateOwnSymbols();
+        GenerateReward();
+        //resultPanelWin.SetActive(false);
+
         if(enemySpawnBtn != null)
         {
             enemySpawnBtn.onClick.AddListener(SpawnEnemy);
+        }
+
+        if(symbolsInventoryBtn != null)
+        {
+            symbolsInventoryBtn.onClick.AddListener(ShowSymbols);
         }
 
         if (rollBtn != null)
@@ -42,17 +77,40 @@ public class BattleMgr : MonoBehaviour
                 slotMachine.RollSlotMachine(this);
             });
         }
+
+        if(nextStageBtn != null)
+        {
+            nextStageBtn.onClick.AddListener(() =>
+            {
+                SceneManager.LoadScene("MapTempScene");
+            });
+        }
+
+        if(goldEarnBtn != null)
+        {
+            goldEarnBtn.onClick.AddListener(() =>
+            {
+                gameMgr.earnGold(rewardGold);
+                goldEarnBtn.interactable = false;
+            });
+        }
+    }
+
+    private void Update()
+    {
+        playerHp.text = gameMgr.GetPlayerHP().ToString();
+        playerGoldText.text = gameMgr.GetGoldAmount().ToString();
     }
 
     //적 생성 함수
     void SpawnEnemy()
     {
-        int r = Random.Range(1, 4);
+        int r = Random.Range(1, 3);
         for (int i = 0; i < r; i++)
         {
             GameObject mon = Instantiate(testEnemyPref);
             mon.GetComponent<Enemy>().battleMgr = this;
-            mon.transform.position = new Vector2(2.5f + (2.5f * i), 2);
+            mon.transform.position = new Vector2(2.5f + (2.5f * i), 1.6f);
             enemies.Add(mon);
         }
     }
@@ -64,7 +122,7 @@ public class BattleMgr : MonoBehaviour
     }
 
     //전투 중 심볼 추가 함수
-    public void AddSymbol(Symbol symbol)
+    public void AddSymbolInBattle(Symbol symbol)
     {
         slotMachine.symbols.Add(symbol);
     }
@@ -97,7 +155,7 @@ public class BattleMgr : MonoBehaviour
         //적 리스트에 있는 모든 몹 공격 코루틴 순서대로 실행
         foreach (GameObject mon in enemies)
         {
-            yield return StartCoroutine(mon.GetComponent<Enemy>().Action());
+            yield return StartCoroutine(mon.GetComponent<Enemy>().ActionEnemy());
         }
 
         //몬스터 턴 종료 상태로 변경
@@ -118,11 +176,13 @@ public class BattleMgr : MonoBehaviour
                 {
                     yield return new WaitForSeconds(0.2f);
                     Debug.Log("상태 효과 발동");
-                    pair.Key.StartCoroutine(pair.Key.EffectStartCondition());
+                    pair.Key.EffectCondition();
                 }
             }
         }
 
+
+        List<Condition> conditions = new List<Condition>();
         //플레이어 상태효과 체크
         foreach(KeyValuePair<Condition, int> pair in playerConditions)
         {
@@ -134,16 +194,13 @@ public class BattleMgr : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
                 pair.Key.EffectCondition();
 
-                //상태이상 횟수 감소
-                if(pair.Value == 1)
-                {
-                    playerConditions.Remove(pair.Key);
-                }
-                else
-                {
-                    playerConditions[pair.Key]--;
-                }
+                conditions.Add(pair.Key);
             }
+        }
+
+        foreach(Condition condition in conditions)
+        {
+            playerConditions[condition]--;
         }
 
         ChangeState(new PlayerTurnState());
@@ -173,6 +230,76 @@ public class BattleMgr : MonoBehaviour
         else
         {
             return 0;
+        }
+    }
+
+    //전투 보상 생성 함수
+    public void GenerateReward()
+    {
+        //심볼 보상
+        List<Symbol> rewards = new List<Symbol>();
+
+        List<Symbol> entireSymbols = new List<Symbol>(gameMgr.GetEntireSymbols());
+        for (int i = 0; i < gameMgr.rewardCount;) //등장할 수 있는 새 카드 수 만큼 반복
+        {
+            int ran = Random.Range(0, entireSymbols.Count);
+            if (rewards.Contains(entireSymbols[ran]))
+            {
+                continue;
+            }
+            else
+            {
+                rewards.Add(entireSymbols[ran]);
+                i++;
+            }
+        }
+
+        Debug.Log(rewards.Count);
+
+        foreach (Symbol reward in rewards)
+        {
+            GameObject rewardSymbol = Instantiate(rewardSymbolNodePref);
+            rewardSymbol.transform.SetParent(rewardLayout.transform, false);
+            rewardSymbol.GetComponent<RewardSymbolNode>().symbol = reward;
+        }
+
+        //골드 보상
+        rewardGold = Random.Range(10, 21);
+        goldEarnAmountText.text = rewardGold.ToString() + "골드";
+    }
+
+    public bool GetRewardState()
+    {
+        return isPlayerGotSymbol;
+    }
+
+    public void ChangeRewardState()
+    {
+        isPlayerGotSymbol = !isPlayerGotSymbol;
+    }
+
+    //보유 심볼 생성 함수
+    void GenerateOwnSymbols()
+    {
+        List<Symbol> Symbols = new List<Symbol>(gameMgr.GetPlayerOwnSymbols());
+        foreach(Symbol symbol in Symbols)
+        {
+            GameObject symbolNode = Instantiate(symbolNodePref);
+            symbolNode.transform.SetParent(ownSymbolGridLayout.transform, false);
+            symbolNode.GetComponent<SymbolNode>().symbol = symbol;
+        }
+    }
+
+    //보유 심볼 확인 버튼
+    void ShowSymbols()
+    {
+        if(ownSymbolsPanel.activeSelf)
+        {
+            ownSymbolsPanel.SetActive(false);
+        }
+        else
+        {
+            ownSymbolsPanel.SetActive(true);
         }
     }
 }

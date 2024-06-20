@@ -3,27 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour
 {
     public string enemyName;
-    public int hp;
-    public int power;
+    public int enemyHp;
+    public int enemyPower;
     public GameObject targetedImg;
     public Button button;
     public Text hpTxt;
     public BattleMgr battleMgr;
     public Dictionary<Condition, int> conditions = new Dictionary<Condition, int>();
-    GameMgr gameMgr;
+    protected GameMgr gameMgr;
 
     public Image attckEffect;
     public Condition testCondition;
 
-    // Start is called before the first frame update
-    void Start()
+    protected virtual void Start()
     {
         gameMgr = GameObject.Find("GameMgr").GetComponent<GameMgr>();
 
-        RefreshHP();
+        RefreshEnemyHP();
 
         if (button != null)
         {
@@ -35,8 +34,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    protected virtual void Update()
     {
         if (battleMgr != null)
         {
@@ -50,25 +48,25 @@ public class Enemy : MonoBehaviour
             }
         }
 
-        if (hp <= 0)
+        if (enemyHp <= 0)
         {
             battleMgr.enemies.Remove(gameObject);
             Destroy(gameObject);
         }
     }
 
-    public void TakeDmg(int n)
+    public virtual void TakeDmgEnemy(int n)
     {
-        hp -= n;
-        RefreshHP();
+        enemyHp -= n;
+        RefreshEnemyHP();
     }
 
-    public void RefreshHP()
+    public void RefreshEnemyHP()
     {
-        hpTxt.text = hp.ToString();
+        hpTxt.text = enemyHp.ToString();
     }
 
-    public void AddEnemyCondition(Condition condition)
+    public virtual void AddEnemyCondition(Condition condition)
     {
         if(conditions.ContainsKey(condition))
         {
@@ -80,16 +78,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public IEnumerator Action()
-    {
-        yield return new WaitForSeconds(0.2f);
-        attckEffect.gameObject.SetActive(true);
-        yield return new WaitForSeconds(0.5f);
-        gameMgr.TakeDmg(power);
-        battleMgr.AddPlayerCondition(testCondition);
-        yield return new WaitForSeconds(0.2f);
-        attckEffect.gameObject.SetActive(false);
+    public abstract IEnumerator ActionEnemy();
 
-        yield return null;
-    }
 }

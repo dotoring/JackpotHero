@@ -5,22 +5,37 @@ using UnityEngine.UI;
 
 public class GameMgr : MonoBehaviour
 {
+    public static GameMgr Instance { get; private set; }
+
     [SerializeField] int playerHP;
-    [SerializeField] int gold;
-    [SerializeField] List<Symbol> symbols;
+    [SerializeField] int playerGold;
+    [SerializeField] List<Symbol> playerOwnSymbols;
+    [SerializeField] List<Symbol> entireSymbols;
     [SerializeField] int wheelNumber;
     //List<Artifact> artifacts;
     //List<Item> items;
 
-    public Text playerHpText;
+    public int rewardCount;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
-        RefreshHp();
+        // 싱글톤 인스턴스가 없으면 현재 인스턴스로 설정
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); // 씬 전환 시 파괴되지 않도록 설정
+        }
+        else if (Instance != this)
+        {
+            Destroy(gameObject); // 이미 인스턴스가 존재하면 현재 인스턴스를 파괴
+        }
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+        //RefreshHp();
+    }
+
     void Update()
     {
         
@@ -34,16 +49,36 @@ public class GameMgr : MonoBehaviour
     public void TakeDmg(int dmg)
     {
         playerHP -= dmg;
-        RefreshHp();
+        //RefreshHp();
     }
 
-    public void RefreshHp()
+    public int GetGoldAmount()
     {
-        playerHpText.text = playerHP.ToString();
+        return playerGold;
     }
 
-    public List<Symbol> GetSymbols()
+    public void earnGold(int val)
     {
-        return symbols;
+        playerGold += val;
+    }
+
+    //public void RefreshHp()
+    //{
+    //    playerHpText.text = playerHP.ToString();
+    //}
+
+    public List<Symbol> GetPlayerOwnSymbols()
+    {
+        return playerOwnSymbols;
+    }
+
+    public void AddPlayerSymbol(Symbol symbol)
+    {
+        playerOwnSymbols.Add(symbol);
+    }
+
+    public List<Symbol> GetEntireSymbols()
+    {
+        return entireSymbols;
     }
 }

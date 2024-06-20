@@ -1,16 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
 
 public class Symbol_One : Symbol
 {
-    public override void DuplicationEffect(int n)
+    public override void DuplicationEffect(int n, GameObject monster)
     {
         Debug.Log(symbolName + "*" + n + "의 특수 피해");
+        monster.GetComponent<Enemy>().TakeDmgEnemy(basicDmg + 5);
     }
 
-    public override void PerfectEffect()
+    public override void PerfectEffect(GameObject monster)
     {
         Debug.Log(symbolName + "의 퍼펙트 피해");
+        monster.GetComponent<Enemy>().TakeDmgEnemy(basicDmg + 10);
     }
 }

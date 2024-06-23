@@ -8,10 +8,12 @@ public class BattleMgr : MonoBehaviour
 {
     GameMgr gameMgr;
 
+    [Header ("Player")]
     //플레이어
     public GameObject playerAttackEffect;
     public Dictionary<Condition, int> playerConditions = new Dictionary<Condition, int>();
 
+    [Header ("Enemy")]
     //적 관련 변수들
     public List<GameObject> enemies = new List<GameObject>();
     public GameObject targetEnemy;
@@ -28,6 +30,7 @@ public class BattleMgr : MonoBehaviour
     public GameObject resultPanelWin;
     public GameObject resultPanelLose;
 
+    [Header ("Reward")]
     //보상
     public GameObject rewardLayout;
     public GameObject rewardSymbolNodePref;
@@ -35,8 +38,12 @@ public class BattleMgr : MonoBehaviour
 
     public int rewardGold;
 
+    public GameObject rewardArtifactPosition;
+    public GameObject rewardArtifactNodePref;
+
     public Button nextStageBtn;
 
+    [Header ("UI")]
     //UI
     public Text playerHp;
 
@@ -50,10 +57,14 @@ public class BattleMgr : MonoBehaviour
     public Button goldEarnBtn;
     public Text goldEarnAmountText;
 
+    public GameObject artifactNodePref;
+    public GameObject ownArtifactGridLayout;
+
     void Start()
     {
         gameMgr = GameObject.Find("GameMgr").GetComponent<GameMgr>();
 
+        ShowArtifacts();
         SpawnEnemy();
         GenerateOwnSymbols();
         GenerateReward();
@@ -82,7 +93,7 @@ public class BattleMgr : MonoBehaviour
         {
             nextStageBtn.onClick.AddListener(() =>
             {
-                SceneManager.LoadScene("MapTempScene");
+                SceneManager.LoadScene("MapScene");
             });
         }
 
@@ -240,10 +251,10 @@ public class BattleMgr : MonoBehaviour
         List<Symbol> rewards = new List<Symbol>();
 
         List<Symbol> entireSymbols = new List<Symbol>(gameMgr.GetEntireSymbols());
-        for (int i = 0; i < gameMgr.rewardCount;) //등장할 수 있는 새 카드 수 만큼 반복
+        for (int i = 0; i < gameMgr.rewardCount;) //등장할 수 있는 보상 수 만큼 반복
         {
             int ran = Random.Range(0, entireSymbols.Count);
-            if (rewards.Contains(entireSymbols[ran]))
+            if (rewards.Contains(entireSymbols[ran])) //중복이면 다시 뽑기
             {
                 continue;
             }
@@ -253,8 +264,6 @@ public class BattleMgr : MonoBehaviour
                 i++;
             }
         }
-
-        Debug.Log(rewards.Count);
 
         foreach (Symbol reward in rewards)
         {
@@ -266,6 +275,13 @@ public class BattleMgr : MonoBehaviour
         //골드 보상
         rewardGold = Random.Range(10, 21);
         goldEarnAmountText.text = rewardGold.ToString() + "골드";
+
+        //유물 보상 ====================임시=================
+        List<Artifact> artifacts = GameMgr.Instance.GetEntireArtifacts();
+        Artifact artifact = artifacts[Random.Range(0, artifacts.Count)];
+        GameObject rewardArtifact = Instantiate(rewardArtifactNodePref);
+        rewardArtifact.GetComponent<RewardArtifactNode>().artifact = artifact;
+        rewardArtifact.transform.SetParent(rewardArtifactPosition.transform, false);
     }
 
     public bool GetRewardState()
@@ -300,6 +316,17 @@ public class BattleMgr : MonoBehaviour
         else
         {
             ownSymbolsPanel.SetActive(true);
+        }
+    }
+
+    //유물 표시
+    void ShowArtifacts()
+    {
+        foreach(Artifact artifact in gameMgr.GetArtifacts())
+        {
+            GameObject artifactNode = Instantiate(artifactNodePref);
+            artifactNode.GetComponent<ArtifactNode>().artifact = artifact;
+            artifactNode.transform.SetParent(ownArtifactGridLayout.transform, false);
         }
     }
 }

@@ -503,8 +503,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: 
-  hp: 15
-  power: 3
+  enemyHp: 15
+  enemyPower: 3
   targetedImg: {fileID: 1785988366791479167}
   button: {fileID: 241482080483344560}
   hpTxt: {fileID: 5660077826718820956}

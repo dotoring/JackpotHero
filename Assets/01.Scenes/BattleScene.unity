@@ -1697,7 +1697,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 989ba11f597ab064ab7229c53af24c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHP: 50
+  playerMaxHP: 50
+  playerCurHP: 0
   playerGold: 0
   playerOwnSymbols:
   - {fileID: 706835808717645957, guid: 7805bb281a2a01d41aaba879c6f07bed, type: 3}
@@ -1714,6 +1715,9 @@ MonoBehaviour:
   - {fileID: 8482044905015290470, guid: 5b47334335340fe4a9598d6beabf1c18, type: 3}
   - {fileID: 4730626077067661535, guid: a71e6c2612add1a43aa8103b9403de28, type: 3}
   wheelNumber: 3
+  playerOwnArtifacts: []
+  entireArtifacts:
+  - {fileID: 6396861256322567636, guid: 76d14d048178ede44a0c9b8578319282, type: 3}
   rewardCount: 3
 --- !u!4 &821059849
 Transform:
@@ -2012,6 +2016,67 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8083230194216316274, guid: b24b370ef0576a5488b52bd142bf570b, type: 3}
   m_PrefabInstance: {fileID: 813529847}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &924594744
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 924594745}
+  - component: {fileID: 924594746}
+  m_Layer: 5
+  m_Name: ArtifactsGrid
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &924594745
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924594744}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1263358930}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -480, y: 480}
+  m_SizeDelta: {x: 940, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &924594746
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 924594744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 80, y: 80}
+  m_Spacing: {x: 20, y: 20}
+  m_Constraint: 0
+  m_ConstraintCount: 2
 --- !u!1001 &936162786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2528,6 +2593,7 @@ RectTransform:
   - {fileID: 1983315868}
   - {fileID: 179424072}
   - {fileID: 555472572}
+  - {fileID: 924594745}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2745,7 +2811,7 @@ MonoBehaviour:
   playerAttackEffect: {fileID: 410692488}
   enemies: []
   targetEnemy: {fileID: 0}
-  testEnemyPref: {fileID: 2582752401448729135, guid: fa002952455e47b479ac4257aef047fb, type: 3}
+  testEnemyPref: {fileID: 9190558818018714136, guid: cbbd11b690640034caf09705612b871d, type: 3}
   enemySpawnBtn: {fileID: 1749531558}
   slotMachinePref: {fileID: 4439713142779051315, guid: ee0d054f10d742041a484e02c25cf718, type: 3}
   slotMachine: {fileID: 1837597072}
@@ -2755,6 +2821,8 @@ MonoBehaviour:
   rewardLayout: {fileID: 1144248415}
   rewardSymbolNodePref: {fileID: 8446416378679526516, guid: ff314295dbb4ce048885cb0ab50dae5e, type: 3}
   rewardGold: 0
+  rewardArtifactPosition: {fileID: 4337226469364256796}
+  rewardArtifactNodePref: {fileID: 6189814862660068742, guid: 4ac0bccefc30c0546b388d38a0355f2d, type: 3}
   nextStageBtn: {fileID: 1924473045}
   playerHp: {fileID: 2705578}
   ownSymbolsPanel: {fileID: 1068704857}
@@ -2764,6 +2832,8 @@ MonoBehaviour:
   playerGoldText: {fileID: 1859739486}
   goldEarnBtn: {fileID: 734953694}
   goldEarnAmountText: {fileID: 993904854}
+  artifactNodePref: {fileID: 4572805585080363841, guid: f0730130b8bdda3439363a9cf66bb166, type: 3}
+  ownArtifactGridLayout: {fileID: 924594744}
 --- !u!4 &1307042475
 Transform:
   m_ObjectHideFlags: 0
@@ -2910,6 +2980,7 @@ RectTransform:
   - {fileID: 1924473044}
   - {fileID: 1144248416}
   - {fileID: 734953693}
+  - {fileID: 4040716687810770462}
   m_Father: {fileID: 1422726973}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4681,3 +4752,39 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8083230194216316274, guid: b24b370ef0576a5488b52bd142bf570b, type: 3}
   m_PrefabInstance: {fileID: 1297356712}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &4040716687810770462
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4337226469364256796}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1409834863}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -290, y: -140}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &4337226469364256796
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4040716687810770462}
+  m_Layer: 5
+  m_Name: RewardArtifactPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1

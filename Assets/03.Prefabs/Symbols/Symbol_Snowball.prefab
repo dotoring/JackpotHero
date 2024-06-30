@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &957649700853052677
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2669180533542492217}
+  - component: {fileID: 8696360078694174119}
+  m_Layer: 0
+  m_Name: Symbol_Snowball
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2669180533542492217
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957649700853052677}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8696360078694174119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 957649700853052677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d588b937200a2134093d5a811bd6b7ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  symbolName: "\uB208\uB369\uC774"
+  symbolDescription: "<size=32><b>\uD398\uC5B4 \uD6A8\uACFC</b></size>\n\uD574\uB2F9
+    \uC804\uD22C \uB3D9\uC548 \uAE30\uBCF8 \uD53C\uD574\uB7C9\uC774 1 \uC99D\uAC00\uD569\uB2C8\uB2E4.\n<size=32><b>\uD37C\uD399\uD2B8
+    \uD6A8\uACFC</b></size>\n\uD574\uB2F9 \uC804\uD22C \uB3D9\uC548 \uAE30\uBCF8
+    \uD53C\uD574\uB7C9\uC774 5 \uC99D\uAC00\uD569\uB2C8\uB2E4."
+  basicDmg: 2
+  sprite: {fileID: 0}

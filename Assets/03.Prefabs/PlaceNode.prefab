@@ -138,3 +138,10 @@ MonoBehaviour:
     posX: 0
     posY: 0
     isHere: 0
+  sprites:
+  - {fileID: 21300000, guid: d4f59da8746f1284aa85d403f08bbfba, type: 3}
+  - {fileID: 21300000, guid: 6248df92f7279fe4aacbf8071750a136, type: 3}
+  - {fileID: 21300000, guid: 7214eefb6de16054eb547214289e24f2, type: 3}
+  - {fileID: 21300000, guid: 293a8d8e6db23ae469c3823115c42089, type: 3}
+  - {fileID: 21300000, guid: 4b36abaa240d17f4c9b5048bd22f7db7, type: 3}
+  - {fileID: 21300000, guid: bb96cebd69fcd0d419897a11e8b53e6b, type: 3}

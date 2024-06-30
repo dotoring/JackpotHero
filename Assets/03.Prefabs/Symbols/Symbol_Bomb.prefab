@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4490372056630436642
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 482509676211585785}
+  - component: {fileID: 5596938358969904748}
+  m_Layer: 0
+  m_Name: Symbol_Bomb
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &482509676211585785
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4490372056630436642}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5596938358969904748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4490372056630436642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 603a93d8952743f4f83f87f26d7db837, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  symbolName: Bomb
+  symbolDescription: "<size=32><b>\uD398\uC5B4 \uD6A8\uACFC</b></size>\n\uD3ED\uD0C4\uC744
+    \uB358\uC838 \uBAA8\uB4E0 \uC801\uC5D0\uAC8C 5\uC758 \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4.\n<size=32><b>\uD37C\uD399\uD2B8
+    \uD6A8\uACFC</b></size>\n\uD3ED\uD0C4\uC744 \uB358\uC838 \uBAA8\uB4E0 \uC801\uC5D0\uAC8C
+    10\uC758 \uD53C\uD574\uB97C \uC785\uD799\uB2C8\uB2E4."
+  basicDmg: 3
+  sprite: {fileID: 21300000, guid: ddf08f332b440c142b9297b268a7e73d, type: 3}

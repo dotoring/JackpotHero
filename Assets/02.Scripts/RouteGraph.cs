@@ -2,6 +2,17 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
+
+public enum PlaceType
+{
+    Battle,
+    Event,
+    Elite,
+    Rest,
+    Shop,
+    Treasure
+}
 
 [System.Serializable]
 public class Place
@@ -11,12 +22,51 @@ public class Place
         posX = x;
         posY = y;
         isHere = b;
+
+        SetPlaceType();
     }
 
     public int posX;
     public int posY;
 
     public bool isHere;
+    public PlaceType placeType;
+
+    void SetPlaceType()
+    {
+        if (posX == 1)
+        {
+            placeType = PlaceType.Battle;
+        }
+        else if (posX == 7)
+        {
+            placeType = PlaceType.Treasure;
+        }
+        else if (posX == 14)
+        {
+            placeType = PlaceType.Rest;
+        }
+        else
+        {
+            //0.0 ~ 1.0 사이의 난수 생성
+            float v = Random.value;
+            //각 확률 정의
+            float[] probabilities = { 0.45f, 0.22f, 0.16f, 0.12f, 0.5f };
+
+            float cumulativeProbability = 0.0f;
+
+            for (int i = 0; i < probabilities.Length; i++)
+            {
+                cumulativeProbability += probabilities[i];
+
+                if (v <= cumulativeProbability)
+                {
+                    placeType = (PlaceType)i;
+                    break;
+                }
+            }
+        }
+    }
 
     // Equals 메서드 재정의
     public override bool Equals(object obj)

@@ -12,7 +12,6 @@ public class SymbolNode : MonoBehaviour
     protected virtual void Start()
     {
         symbolImg = GetComponent<Image>();
-        informationPanel = GameObject.Find("MainCanvas").transform.Find("SymbolInformationPanel").gameObject;
         symbolImg.sprite = symbol.sprite;
     }
 

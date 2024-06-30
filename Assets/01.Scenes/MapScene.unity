@@ -819,3 +819,71 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1297802508}
   m_CullTransparentMesh: 1
+--- !u!1 &1304599742
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1304599744}
+  - component: {fileID: 1304599743}
+  m_Layer: 0
+  m_Name: GameMgr
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1304599743
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304599742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 989ba11f597ab064ab7229c53af24c8d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerMaxHP: 50
+  playerCurHP: 0
+  playerGold: 0
+  playerOwnSymbols:
+  - {fileID: 706835808717645957, guid: 7805bb281a2a01d41aaba879c6f07bed, type: 3}
+  - {fileID: 7228315198001064359, guid: 1f835de369684a247bfa05550e49717c, type: 3}
+  - {fileID: 3804872931682639470, guid: 484b7d274f8c43c40bad5ca38a02141d, type: 3}
+  - {fileID: 7944820589665149643, guid: f7c9cd12fb70e1446840b2d08e2eab65, type: 3}
+  - {fileID: 8482044905015290470, guid: 5b47334335340fe4a9598d6beabf1c18, type: 3}
+  - {fileID: 4730626077067661535, guid: a71e6c2612add1a43aa8103b9403de28, type: 3}
+  entireSymbols:
+  - {fileID: 706835808717645957, guid: 7805bb281a2a01d41aaba879c6f07bed, type: 3}
+  - {fileID: 7228315198001064359, guid: 1f835de369684a247bfa05550e49717c, type: 3}
+  - {fileID: 3804872931682639470, guid: 484b7d274f8c43c40bad5ca38a02141d, type: 3}
+  - {fileID: 7944820589665149643, guid: f7c9cd12fb70e1446840b2d08e2eab65, type: 3}
+  - {fileID: 8482044905015290470, guid: 5b47334335340fe4a9598d6beabf1c18, type: 3}
+  - {fileID: 4730626077067661535, guid: a71e6c2612add1a43aa8103b9403de28, type: 3}
+  - {fileID: 5596938358969904748, guid: 9cc055fc380c2314eb330cd05ec7cf42, type: 3}
+  - {fileID: 8696360078694174119, guid: f68b52ee62a29c8418e3e2b1fc582a03, type: 3}
+  wheelNumber: 3
+  playerOwnArtifacts: []
+  entireArtifacts:
+  - {fileID: 6396861256322567636, guid: 76d14d048178ede44a0c9b8578319282, type: 3}
+  rewardCount: 3
+--- !u!4 &1304599744
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304599742}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

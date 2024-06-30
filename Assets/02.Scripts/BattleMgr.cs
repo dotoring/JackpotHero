@@ -30,13 +30,15 @@ public class BattleMgr : MonoBehaviour
     public GameObject resultPanelWin;
     public GameObject resultPanelLose;
 
-    [Header ("Reward")]
+    [Header ("Rewards")]
     //보상
     public GameObject rewardLayout;
     public GameObject rewardSymbolNodePref;
     bool isPlayerGotSymbol;
 
     public int rewardGold;
+    public Button goldEarnBtn;
+    public Text goldEarnAmountText;
 
     public GameObject rewardArtifactPosition;
     public GameObject rewardArtifactNodePref;
@@ -53,9 +55,6 @@ public class BattleMgr : MonoBehaviour
     public GameObject symbolNodePref;
 
     public Text playerGoldText;
-
-    public Button goldEarnBtn;
-    public Text goldEarnAmountText;
 
     public GameObject artifactNodePref;
     public GameObject ownArtifactGridLayout;
@@ -130,6 +129,16 @@ public class BattleMgr : MonoBehaviour
     public void SetTargetEnemy(GameObject go)
     {
         targetEnemy = go;
+    }
+
+    public List<Enemy> GetEnemies()
+    {
+        List<Enemy> enemiesList = new List<Enemy>();
+        foreach(GameObject e in enemies)
+        {
+            enemiesList.Add(e.GetComponent<Enemy>());
+        }
+        return enemiesList;
     }
 
     //전투 중 심볼 추가 함수

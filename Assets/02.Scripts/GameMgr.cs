@@ -60,7 +60,14 @@ public class GameMgr : MonoBehaviour
     //플레이어 회복 함수
     public void HealPlayer(int val)
     {
-        playerCurHP += val;
+        if(playerCurHP + val > playerMaxHP)
+        {
+            playerCurHP = playerMaxHP;
+        }
+        else
+        {
+            playerCurHP += val;
+        }
     }
 
     //플레이어 골드 get함수

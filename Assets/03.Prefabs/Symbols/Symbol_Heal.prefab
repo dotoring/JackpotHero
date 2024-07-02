@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ca4140dfe062af43990a64279353c94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  symbolName: Heal
+  symbolName: "\uAD6C\uAE09\uC0C1\uC790"
   symbolDescription: "<size=32><b>\uD398\uC5B4 \uD6A8\uACFC</b></size>\n10\uC758
     \uCCB4\uB825\uC744 \uD68C\uBCF5\uD569\uB2C8\uB2E4.\n<size=32><b>\uD37C\uD399\uD2B8
     \uD6A8\uACFC</b></size>\n30\uC758 \uCCB4\uB825\uC744 \uD68C\uBCF5\uD569\uB2C8\uB2E4."
   basicDmg: 1
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: ce382a4fcc0bfb9498554c3e628af558, type: 3}

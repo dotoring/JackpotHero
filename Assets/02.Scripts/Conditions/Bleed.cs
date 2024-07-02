@@ -4,9 +4,18 @@ using UnityEngine;
 
 public class Bleed : Condition
 {
-
-    public override void EffectCondition()
+    public override IEnumerator EffectCondition(object obj, int val)
     {
-        base.EffectCondition();
+        //플레이어일 경우
+        if (obj is BattleMgr battleMgr)
+        {
+            GameMgr.Instance.TakeDmg(val);
+        }
+        else if (obj is Enemy enemy)
+        {
+            enemy.TakeDmgEnemy(val);
+        }
+
+        yield return null;
     }
 }

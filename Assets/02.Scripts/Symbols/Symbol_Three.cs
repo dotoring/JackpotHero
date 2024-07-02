@@ -6,13 +6,11 @@ public class Symbol_Three : Symbol
 {
     public override void DuplicationEffect(int n, GameObject monster)
     {
-        Debug.Log(symbolName + "*" + n + "의 특수 피해");
-        monster.GetComponent<Enemy>().TakeDmgEnemy(basicDmg + 5);
+        AttackEnemy(monster, basicDmg + 5);
     }
 
     public override void PerfectEffect(GameObject monster)
     {
-        Debug.Log(symbolName + "의 퍼펙트 피해");
-        monster.GetComponent<Enemy>().TakeDmgEnemy(basicDmg + 10);
+        AttackEnemy(monster, basicDmg + 10);
     }
 }

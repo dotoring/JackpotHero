@@ -177,7 +177,6 @@ public class MapMgr : MonoBehaviour
     void SetCurrentMapPosition()
     {
         Vector2 mapPosition = new Vector2(-350 + (PlayData.curPlace.posX * -200), 360);
-        Debug.Log(mapPosition);
         mapScroll.anchoredPosition = mapPosition;
     }
 }

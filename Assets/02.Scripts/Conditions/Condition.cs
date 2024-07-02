@@ -9,17 +9,18 @@ public enum ConditionType
     ActiveOnStart,
 }
 
-public class Condition : MonoBehaviour
+public abstract class Condition : MonoBehaviour
 {
-    [SerializeField] string conditionName;
-    [SerializeField] int value;
-    [SerializeField] string description;
-    [SerializeField] ConditionType type;
+    public Sprite conditionSprite;
+    [SerializeField] protected string conditionName;
+    [SerializeField] protected int value;
+    [SerializeField] protected string description;
+    [SerializeField] protected ConditionType type;
+    public bool isPersist;
 
-    public virtual void EffectCondition()
-    {
-        Debug.Log("상태이상 : " + conditionName);
-    }
+    /// <param name="obj">플레이어 or 적</param>
+    /// <param name="val">수치</param>
+    public abstract IEnumerator EffectCondition(object obj, int val);
 
     public ConditionType GetConditionType()
     {

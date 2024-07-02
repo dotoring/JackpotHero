@@ -9,6 +9,7 @@ public class GameMgr : MonoBehaviour
 
     [SerializeField] int playerMaxHP;
     [SerializeField] int playerCurHP;
+    [SerializeField] int playerBarrier;
     [SerializeField] int playerGold;
     [SerializeField] List<Symbol> playerOwnSymbols;
     [SerializeField] List<Symbol> entireSymbols;
@@ -36,6 +37,17 @@ public class GameMgr : MonoBehaviour
     void Start()
     {
         playerCurHP = playerMaxHP;
+        SetStartValue();
+    }
+
+    void SetStartValue()
+    {
+        AddPlayerSymbol(entireSymbols[0]);
+        AddPlayerSymbol(entireSymbols[1]);
+        AddPlayerSymbol(entireSymbols[2]);
+        AddPlayerSymbol(entireSymbols[3]);
+        AddPlayerSymbol(entireSymbols[4]);
+        AddPlayerSymbol(entireSymbols[5]);
     }
 
     //플레이어 최대 체력 증가 함수
@@ -54,6 +66,24 @@ public class GameMgr : MonoBehaviour
     //플레이어 피해 함수
     public void TakeDmg(int dmg)
     {
+        //배리어가 있다면
+        if(playerBarrier > 0)
+        {
+            //피해량이 배리어보다 작거나 같을 때
+            if(playerBarrier >= dmg)
+            {
+                //배리어 감소 후 끝
+                playerBarrier -= dmg;
+                return;
+            }
+            else
+            {
+                //피해량이 배리어보다 클 때
+                //배리어 만큼 피해량 감소 후 배리어 0
+                dmg -= playerBarrier;
+                ResetBarrier();
+            }
+        }
         playerCurHP -= dmg;
     }
 
@@ -68,6 +98,22 @@ public class GameMgr : MonoBehaviour
         {
             playerCurHP += val;
         }
+    }
+
+    public void ResetBarrier()
+    {
+        playerBarrier = 0;
+
+        //ui삭제 해주기
+
+    }
+
+    public void AddBarrier(int val)
+    {
+        playerBarrier += val;
+
+        //ui추가 해주기
+
     }
 
     //플레이어 골드 get함수
@@ -91,7 +137,32 @@ public class GameMgr : MonoBehaviour
     //보유 심볼 추가 함수
     public void AddPlayerSymbol(Symbol symbol)
     {
-        playerOwnSymbols.Add(symbol);
+        Symbol s = null;
+
+        if (!playerOwnSymbols.Contains(symbol))
+        {
+            s = Instantiate(symbol, transform);
+        }
+        else
+        {
+            foreach(Symbol sym in playerOwnSymbols)
+            {
+                if(symbol == sym)
+                {
+                    s = sym;
+                    break;
+                }
+            }
+        }
+        
+        if(s != null)
+        {
+            playerOwnSymbols.Add(s);
+        }
+        else
+        {
+            Debug.LogWarning("NewSymbol not found");
+        }
     }
 
     //게임 내 전체 심볼 리스트 get함수

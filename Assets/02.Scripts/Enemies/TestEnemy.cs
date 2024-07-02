@@ -9,7 +9,7 @@ public class TestEnemy : Enemy
         yield return new WaitForSeconds(0.2f);
         attckEffect.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.5f);
-        gameMgr.TakeDmg(enemyPower);
+        AttackPlayer();
         yield return new WaitForSeconds(0.2f);
         attckEffect.gameObject.SetActive(false);
 

@@ -12,6 +12,8 @@ public class TurnStartState : IBattleState
     {
         Debug.Log("턴 시작 시 효과 코루틴");
         battleMgr.StartCoroutine(battleMgr.TurnStartEffect());
+
+
     }
 }
 

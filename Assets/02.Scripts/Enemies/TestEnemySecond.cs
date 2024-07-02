@@ -9,7 +9,7 @@ public class TestEnemySecond : Enemy
         yield return new WaitForSeconds(0.2f);
         attckEffect.gameObject.SetActive(true);
         yield return new WaitForSeconds(0.5f);
-        gameMgr.TakeDmg(enemyPower);
+        AttackPlayer();
         Heal(2);
         yield return new WaitForSeconds(0.2f);
         attckEffect.gameObject.SetActive(false);
@@ -19,7 +19,7 @@ public class TestEnemySecond : Enemy
 
     void Heal(int val)
     {
-        enemyHp += val;
+        enemyCurHp += val;
         RefreshEnemyHP();
     }
 }

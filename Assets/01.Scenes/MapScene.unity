@@ -850,23 +850,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMaxHP: 50
   playerCurHP: 0
+  playerBarrier: 0
   playerGold: 0
-  playerOwnSymbols:
-  - {fileID: 706835808717645957, guid: 7805bb281a2a01d41aaba879c6f07bed, type: 3}
-  - {fileID: 7228315198001064359, guid: 1f835de369684a247bfa05550e49717c, type: 3}
-  - {fileID: 3804872931682639470, guid: 484b7d274f8c43c40bad5ca38a02141d, type: 3}
-  - {fileID: 7944820589665149643, guid: f7c9cd12fb70e1446840b2d08e2eab65, type: 3}
-  - {fileID: 8482044905015290470, guid: 5b47334335340fe4a9598d6beabf1c18, type: 3}
-  - {fileID: 4730626077067661535, guid: a71e6c2612add1a43aa8103b9403de28, type: 3}
+  playerOwnSymbols: []
   entireSymbols:
   - {fileID: 706835808717645957, guid: 7805bb281a2a01d41aaba879c6f07bed, type: 3}
   - {fileID: 7228315198001064359, guid: 1f835de369684a247bfa05550e49717c, type: 3}
-  - {fileID: 3804872931682639470, guid: 484b7d274f8c43c40bad5ca38a02141d, type: 3}
+  - {fileID: 7265357885765429753, guid: b5229ecce24aca4479a145b9a6ced635, type: 3}
   - {fileID: 7944820589665149643, guid: f7c9cd12fb70e1446840b2d08e2eab65, type: 3}
   - {fileID: 8482044905015290470, guid: 5b47334335340fe4a9598d6beabf1c18, type: 3}
   - {fileID: 4730626077067661535, guid: a71e6c2612add1a43aa8103b9403de28, type: 3}
+  - {fileID: 669338108775362576, guid: 6bc6136a96dcc744ab4479b17dbba29c, type: 3}
   - {fileID: 5596938358969904748, guid: 9cc055fc380c2314eb330cd05ec7cf42, type: 3}
+  - {fileID: 8617124619496768942, guid: 11870d056479e4345b5b9481a5332728, type: 3}
+  - {fileID: 5151237635710006149, guid: feda9ea480a4f0247a8afe34c9ac9671, type: 3}
+  - {fileID: 258827580728393622, guid: 071089b0741b68646aad4a95f85b27cf, type: 3}
   - {fileID: 8696360078694174119, guid: f68b52ee62a29c8418e3e2b1fc582a03, type: 3}
+  - {fileID: 7338972683652267813, guid: 3a49b6a8bfc60584d9d7ba33e12ca8a5, type: 3}
+  - {fileID: 1035597342168043332, guid: c4f2569bba7d76c4b8de333ee5abe7dd, type: 3}
+  - {fileID: 53756338456844330, guid: 4b41343e3a7aba94f9d52357694e1784, type: 3}
   wheelNumber: 3
   playerOwnArtifacts: []
   entireArtifacts:

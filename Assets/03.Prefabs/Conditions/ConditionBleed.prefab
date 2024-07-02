@@ -44,7 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 019d5f889def6ca4f95573bda5b35acd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  conditionSprite: {fileID: 21300000, guid: 6499763d27e847341ad014f90d6e1c51, type: 3}
   conditionName: "\uCD9C\uD608"
   value: 1
-  description: 
+  description: "\uC2A4\uD0DD\uB9CC\uD07C \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4."
   type: 2

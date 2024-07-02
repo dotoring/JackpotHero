@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a294e7f5fa2b2394bae13d204b3895d6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  symbolName: Stone
+  symbolName: "\uC9F1\uB3CC"
   symbolDescription: "<size=32><b>\uD398\uC5B4 \uD6A8\uACFC</b></size>\n\uD3C9\uBC94\uD55C
     \uB3CC\uC785\uB2C8\uB2E4.\n<size=32><b>\uD37C\uD399\uD2B8 \uD6A8\uACFC</b></size>\n\uD3C9\uBC94\uD55C
     \uB3CC\uC785\uB2C8\uB2E4."
   basicDmg: 10
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 3e6ae44bb9d20854eb7d2fde8a7de8f7, type: 3}

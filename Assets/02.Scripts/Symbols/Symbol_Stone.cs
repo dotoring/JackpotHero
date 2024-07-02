@@ -6,11 +6,11 @@ public class Symbol_Stone : Symbol
 {
     public override void DuplicationEffect(int n, GameObject monster)
     {
-        monster.GetComponent<Enemy>().TakeDmgEnemy(basicDmg);
+        AttackEnemy(monster, basicDmg);
     }
 
     public override void PerfectEffect(GameObject monster)
     {
-        monster.GetComponent<Enemy>().TakeDmgEnemy(basicDmg);
+        AttackEnemy(monster, basicDmg);
     }
 }

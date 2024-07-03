@@ -17,10 +17,13 @@ public abstract class Condition : MonoBehaviour
     [SerializeField] protected string description;
     [SerializeField] protected ConditionType type;
     public bool isPersist;
+    public bool isEffected;
 
     /// <param name="obj">플레이어 or 적</param>
     /// <param name="val">수치</param>
     public abstract IEnumerator EffectCondition(object obj, int val);
+
+    public abstract IEnumerator EndCondition(object obj);
 
     public ConditionType GetConditionType()
     {

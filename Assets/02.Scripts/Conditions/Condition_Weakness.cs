@@ -18,4 +18,18 @@ public class Condition_Weakness : Condition
 
         yield return null;
     }
+
+    public override IEnumerator EndCondition(object obj)
+    {
+        //플레이어일 경우
+        if (obj is BattleMgr battleMgr)
+        {
+            battleMgr.isPlayerWeak = false;
+        }
+        else if (obj is Enemy enemy)
+        {
+            enemy.isEnemyWeak = false;
+        }
+        yield return null;
+    }
 }

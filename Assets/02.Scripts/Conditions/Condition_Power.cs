@@ -18,4 +18,19 @@ public class Condition_Power : Condition
 
         yield return null;
     }
+
+    public override IEnumerator EndCondition(object obj)
+    {
+        //플레이어일 경우
+        if (obj is BattleMgr battleMgr)
+        {
+            battleMgr.power = 0;
+        }
+        else if (obj is Enemy enemy) //적일 경우
+        {
+            enemy.enemyAdditionPower = 0;
+        }
+
+        yield return null;
+    }
 }

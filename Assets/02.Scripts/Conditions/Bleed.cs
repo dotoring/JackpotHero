@@ -18,4 +18,19 @@ public class Bleed : Condition
 
         yield return null;
     }
+
+    public override IEnumerator EndCondition(object obj)
+    {
+        //플레이어일 경우
+        if (obj is BattleMgr battleMgr)
+        {
+            GameMgr.Instance.TakeDmg(1);
+        }
+        else if (obj is Enemy enemy)
+        {
+            enemy.TakeDmgEnemy(1);
+        }
+
+        yield return null;
+    }
 }

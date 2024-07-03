@@ -9,11 +9,13 @@ public class Symbol_Weakness : Symbol
     {
         AttackEnemy(monster, basicDmg);
         monster.GetComponent<Enemy>().AddEnemyCondition(condition, 1);
+        GameObject.Find("BattleMgr").GetComponent<BattleMgr>().AddPlayerCondition(condition, 1);
     }
 
     public override void PerfectEffect(GameObject monster)
     {
         AttackEnemy(monster, basicDmg);
         monster.GetComponent<Enemy>().AddEnemyCondition(condition, 5);
+        GameObject.Find("BattleMgr").GetComponent<BattleMgr>().AddPlayerCondition(condition, 1);
     }
 }

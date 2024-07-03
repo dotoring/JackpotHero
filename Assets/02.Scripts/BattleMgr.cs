@@ -15,6 +15,8 @@ public class BattleMgr : MonoBehaviour
 
     public GameObject playerAttackEffect;
     public Dictionary<Condition, int> playerConditions = new Dictionary<Condition, int>();
+    public Transform playerConditionLayout;
+    public GameObject conditionNodePref;
 
     [Header ("Enemy")]
     //적 관련 변수들
@@ -166,7 +168,24 @@ public class BattleMgr : MonoBehaviour
         if(condition.GetConditionType() == ConditionType.Buff || 
             condition.GetConditionType() == ConditionType.Debuff)
         {
-            condition.EffectCondition(this, val);
+            StartCoroutine(condition.EffectCondition(this, val));
+        }
+
+        RefreshConditionLayout();
+    }
+
+    public void RefreshConditionLayout()
+    {
+        foreach (Transform child in playerConditionLayout) //보유 아이템 리스트의 오브젝트들 제거
+        {
+            Destroy(child.gameObject);
+        }
+
+        foreach (KeyValuePair<Condition, int> pair in playerConditions)
+        {
+            GameObject node = Instantiate(conditionNodePref);
+            node.GetComponent<ConditionNode>().SetNode(pair.Key.conditionSprite, pair.Value);
+            node.transform.SetParent(playerConditionLayout, false);
         }
     }
 
@@ -213,78 +232,45 @@ public class BattleMgr : MonoBehaviour
                 //시작 시 발동되는 상태효과일 경우
                 if (!pair.Key.isPersist)
                 {
-                    yield return new WaitForSeconds(0.2f);
-                    Debug.Log("상태 효과 발동");
-                    yield return StartCoroutine(pair.Key.EffectCondition(ene, pair.Value));
-
                     enemyConditions.Add(pair.Key);
                 }
             }
 
-            if (ene != null) //죽지 않았다면
-            {
-                foreach (Condition condition in enemyConditions)
-                {
-                    //지속 효과가 아니면 하나씩 감소
-                    if (!condition.isPersist)
-                    {
-                        //1남은 경우 였으면 삭제
-                        if (ene.conditions[condition] == 1)
-                        {
-                            ene.conditions.Remove(condition);
-                        }
-                        else
-                        {
-                            //2이상 이라면 1씩 감소
-                            ene.conditions[condition]--;
-                        }
-                    }
-                }
 
+            foreach (Condition condition in enemyConditions)
+            {
+                //지속 효과가 아니면 하나씩 감소
+
+                //1남은 경우 였으면 삭제
+                if (ene.conditions[condition] == 1)
+                {
+                    yield return StartCoroutine(condition.EndCondition(ene));
+                    if(ene == null) //죽었으면 넘어가기
+                    {
+                        continue;
+                    }
+
+                    ene.conditions.Remove(condition);
+                }
+                else
+                {
+                    yield return StartCoroutine(condition.EffectCondition(ene, ene.conditions[condition]));
+                    if (ene == null) //죽었으면 넘어가기
+                    {
+                        continue;
+                    }
+
+                    //2이상 이라면 1씩 감소
+                    ene.conditions[condition]--;
+                }
+            }
+
+            if(ene != null)
+            {
                 ene.RefreshConditionLayout();
             }
         }
 
-        //foreach(GameObject mon in enemies)
-        //{
-        //    //약화해제
-        //    mon.GetComponent<Enemy>().isEnemyWeak = false;
-
-        //    List<Condition> enemyConditions = new List<Condition>();
-
-        //    foreach (KeyValuePair<Condition, int> pair in mon.GetComponent<Enemy>().conditions)
-        //    {
-        //        //시작 시 발동되는 상태효과일 경우
-        //        if(!pair.Key.isPersist)
-        //        {
-        //            yield return new WaitForSeconds(0.2f);
-        //            Debug.Log("상태 효과 발동");
-        //            yield return StartCoroutine(pair.Key.EffectCondition(mon.GetComponent<Enemy>(), pair.Value));
-
-        //            enemyConditions.Add(pair.Key);
-        //        }
-        //    }
-
-        //    foreach (Condition condition in enemyConditions)
-        //    {
-        //        //지속 효과가 아니면 하나씩 감소
-        //        if (!condition.isPersist)
-        //        {
-        //            //1남은 경우 였으면 삭제
-        //            if(mon.GetComponent<Enemy>().conditions[condition] == 1)
-        //            {
-        //                mon.GetComponent<Enemy>().conditions.Remove(condition);
-        //            }
-        //            else
-        //            {
-        //                //2이상 이라면 1씩 감소
-        //                mon.GetComponent<Enemy>().conditions[condition]--;
-        //            }
-        //        }
-        //    }
-
-        //    mon.GetComponent<Enemy>().RefreshConditionLayout();
-        //}
 
         //=========================플레이어==============================
         isPlayerWeak = false;
@@ -294,13 +280,8 @@ public class BattleMgr : MonoBehaviour
         foreach(KeyValuePair<Condition, int> pair in playerConditions)
         {
             //시작 시 발동되는 상태효과일 경우
-            if (pair.Key.GetConditionType() == ConditionType.ActiveOnStart)
+            if (!pair.Key.isPersist)
             {
-                yield return new WaitForSeconds(0.2f);
-                Debug.Log("상태 효과 애니메이션");
-                yield return new WaitForSeconds(0.5f);
-                yield return StartCoroutine(pair.Key.EffectCondition(this, pair.Value));
-
                 conditions.Add(pair.Key);
             }
         }
@@ -308,21 +289,30 @@ public class BattleMgr : MonoBehaviour
         //컨디션 지속기간 감소
         foreach(Condition condition in conditions)
         {
-            //지속 효과가 아니면 하나씩 감소
-            if(!condition.isPersist)
+            if(condition.isEffected)
             {
                 //1남은 경우 였으면 삭제
                 if (playerConditions[condition] == 1)
                 {
+                    yield return StartCoroutine(condition.EndCondition(this));
+
                     playerConditions.Remove(condition);
                 }
                 else
                 {
+                    yield return StartCoroutine(condition.EffectCondition(this, playerConditions[condition]));
+
                     //2이상 이라면 1씩 감소
                     playerConditions[condition]--;
                 }
             }
+            else
+            {
+                condition.isEffected = true;
+            }
         }
+
+        RefreshConditionLayout();
 
         Debug.Log("전투 상태 체크");
         int result = CheckBattleCondition();

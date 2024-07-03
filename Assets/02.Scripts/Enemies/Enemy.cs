@@ -114,7 +114,7 @@ public abstract class Enemy : MonoBehaviour
         if (condition.GetConditionType() == ConditionType.Buff ||
             condition.GetConditionType() == ConditionType.Debuff)
         {
-            condition.EffectCondition(this, val);
+            StartCoroutine(condition.EffectCondition(this, val));
         }
 
         RefreshConditionLayout();

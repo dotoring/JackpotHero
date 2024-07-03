@@ -49,3 +49,5 @@ MonoBehaviour:
   value: 1
   description: "\uC2A4\uD0DD\uB9CC\uD07C \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4."
   type: 2
+  isPersist: 0
+  isEffected: 1

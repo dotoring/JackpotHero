@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -7,6 +8,13 @@ using UnityEngine.UI;
 public class BattleMgr : MonoBehaviour
 {
     GameMgr gameMgr;
+    public SlotMachine slotMachine;
+    public Button rollBtn;
+
+    public IBattleState curState;
+
+    public GameObject resultPanelWin;
+    public GameObject resultPanelLose;
 
     [Header("Player")]
     //플레이어
@@ -24,16 +32,6 @@ public class BattleMgr : MonoBehaviour
     public GameObject targetEnemy;
 
     public GameObject testEnemyPref;
-    public Button enemySpawnBtn; //for test
-
-    public GameObject slotMachinePref;
-    public SlotMachine slotMachine;
-    public Button rollBtn;
-
-    public IBattleState curState;
-
-    public GameObject resultPanelWin;
-    public GameObject resultPanelLose;
 
     [Header ("Rewards")]
     //보상
@@ -51,39 +49,17 @@ public class BattleMgr : MonoBehaviour
     public Button nextStageBtn;
 
     [Header ("UI")]
-    //UI
-    public Text playerHp;
-
-    public GameObject ownSymbolsPanel;
-    public Button symbolsInventoryBtn;
-    public GameObject ownSymbolGridLayout;
-    public GameObject symbolNodePref;
-
-    public Text playerGoldText;
-
-    public GameObject artifactNodePref;
-    public GameObject ownArtifactGridLayout;
+    public TextMeshProUGUI playerHp;
+    public TextMeshProUGUI playerBarrier;
+    public GameObject playerBarrierUI;
 
     void Start()
     {
         gameMgr = GameMgr.Instance;
         gameMgr.ResetBarrier();
 
-        ShowArtifacts();
         SpawnEnemy();
-        GenerateOwnSymbols();
         GenerateReward();
-        //resultPanelWin.SetActive(false);
-
-        if(enemySpawnBtn != null)
-        {
-            enemySpawnBtn.onClick.AddListener(SpawnEnemy);
-        }
-
-        if(symbolsInventoryBtn != null)
-        {
-            symbolsInventoryBtn.onClick.AddListener(ShowSymbols);
-        }
 
         if (rollBtn != null)
         {
@@ -114,8 +90,16 @@ public class BattleMgr : MonoBehaviour
 
     private void Update()
     {
-        playerHp.text = gameMgr.GetPlayerHP().ToString();
-        playerGoldText.text = gameMgr.GetGoldAmount().ToString();
+        playerHp.text = gameMgr.GetPlayerCurHP().ToString();
+        playerBarrier.text = gameMgr.GetBarrier().ToString();
+        if(gameMgr.GetBarrier() > 0)
+        {
+            playerBarrierUI.SetActive(true);
+        }
+        else
+        {
+            playerBarrierUI.SetActive(false);
+        }
     }
 
     //적 생성 함수
@@ -350,7 +334,7 @@ public class BattleMgr : MonoBehaviour
             return 1;
             //승리창
         }
-        else if (gameMgr.GetPlayerHP() <= 0)
+        else if (gameMgr.GetPlayerCurHP() <= 0)
         {
             return 2;
             //패배 창
@@ -394,11 +378,11 @@ public class BattleMgr : MonoBehaviour
         goldEarnAmountText.text = rewardGold.ToString() + "골드";
 
         //유물 보상 ====================임시=================
-        List<Artifact> artifacts = GameMgr.Instance.GetEntireArtifacts();
-        Artifact artifact = artifacts[Random.Range(0, artifacts.Count)];
-        GameObject rewardArtifact = Instantiate(rewardArtifactNodePref);
-        rewardArtifact.GetComponent<RewardArtifactNode>().artifact = artifact;
-        rewardArtifact.transform.SetParent(rewardArtifactPosition.transform, false);
+        //List<Artifact> artifacts = GameMgr.Instance.GetEntireArtifacts();
+        //Artifact artifact = artifacts[Random.Range(0, artifacts.Count)];
+        //GameObject rewardArtifact = Instantiate(rewardArtifactNodePref);
+        //rewardArtifact.GetComponent<RewardArtifactNode>().artifact = artifact;
+        //rewardArtifact.transform.SetParent(rewardArtifactPosition.transform, false);
     }
 
     public bool GetRewardState()
@@ -409,41 +393,5 @@ public class BattleMgr : MonoBehaviour
     public void ChangeRewardState()
     {
         isPlayerGotSymbol = !isPlayerGotSymbol;
-    }
-
-    //보유 심볼 생성 함수
-    void GenerateOwnSymbols()
-    {
-        List<Symbol> Symbols = new List<Symbol>(gameMgr.GetPlayerOwnSymbols());
-        foreach(Symbol symbol in Symbols)
-        {
-            GameObject symbolNode = Instantiate(symbolNodePref);
-            symbolNode.transform.SetParent(ownSymbolGridLayout.transform, false);
-            symbolNode.GetComponent<SymbolNode>().symbol = symbol;
-        }
-    }
-
-    //보유 심볼 확인 버튼
-    void ShowSymbols()
-    {
-        if(ownSymbolsPanel.activeSelf)
-        {
-            ownSymbolsPanel.SetActive(false);
-        }
-        else
-        {
-            ownSymbolsPanel.SetActive(true);
-        }
-    }
-
-    //유물 표시
-    void ShowArtifacts()
-    {
-        foreach(Artifact artifact in gameMgr.GetArtifacts())
-        {
-            GameObject artifactNode = Instantiate(artifactNodePref);
-            artifactNode.GetComponent<ArtifactNode>().artifact = artifact;
-            artifactNode.transform.SetParent(ownArtifactGridLayout.transform, false);
-        }
     }
 }

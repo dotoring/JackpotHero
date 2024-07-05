@@ -57,8 +57,13 @@ public class GameMgr : MonoBehaviour
         playerCurHP += val;
     }
 
+    public int GetPlayerMaxHP()
+    {
+        return playerMaxHP;
+    }
+
     //플레이어 현재 체력 get함수
-    public int GetPlayerHP()
+    public int GetPlayerCurHP()
     {
         return playerCurHP;
     }
@@ -114,6 +119,11 @@ public class GameMgr : MonoBehaviour
 
         //ui추가 해주기
 
+    }
+
+    public int GetBarrier()
+    {
+        return playerBarrier;
     }
 
     //플레이어 골드 get함수

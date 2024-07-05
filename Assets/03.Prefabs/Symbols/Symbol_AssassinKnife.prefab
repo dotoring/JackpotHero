@@ -49,4 +49,4 @@ MonoBehaviour:
     \uD53C\uD574\uB7C9\uC758 2\uBC30 \uB9CC\uD07C \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4.\n<size=32><b>\uD37C\uD399\uD2B8
     \uD6A8\uACFC</b></size>\n\uC801\uC744 \uC989\uC0AC\uC2DC\uD0B5\uB2C8\uB2E4."
   basicDmg: 2
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: df67b53b1cdb8ab46bd2bf15f9374861, type: 3}

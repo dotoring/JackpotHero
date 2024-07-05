@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static UnityEditor.Progress;
@@ -13,7 +14,7 @@ public abstract class Enemy : MonoBehaviour
     public int enemyAdditionPower;
     public GameObject targetedImg;
     public Button button;
-    public Text hpTxt;
+    public TextMeshProUGUI hpTxt;
     public BattleMgr battleMgr;
     public Dictionary<Condition, int> conditions = new Dictionary<Condition, int>();
     public Transform conditionsLayout;

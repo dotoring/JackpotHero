@@ -45,8 +45,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   symbolName: "\uC274\uB4DC"
-  symbolDescription: "<size=32><b>\uD398\uC5B4 \uD6A8\uACFC</b></size>\n5\uC758 \uBCF4\uD638\uB9C9\uC744
-    \uC0DD\uC131\uD569\uB2C8\uB2E4.\n<size=32><b>\uD37C\uD399\uD2B8 \uD6A8\uACFC</b></size>\n15\uC758
-    \uBCF4\uD638\uB9C9\uC744 \uC0DD\uC131\uD569\uB2C8\uB2E4."
+  symbolBasicDescription: 
+  symbolPairDescription: "\uBC29\uC5B4\uB3C4\uB97C 5 \uC5BB\uC2B5\uB2C8\uB2E4."
+  symbolPerfectDescription: "\uBC29\uC5B4\uB3C4\uB97C 15 \uC5BB\uC2B5\uB2C8\uB2E4."
   basicDmg: 4
   sprite: {fileID: 21300000, guid: 711d991538381ad42a65a564b8643346, type: 3}

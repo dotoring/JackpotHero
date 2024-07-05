@@ -11,6 +11,6 @@ public class Symbol_Heal : Symbol
 
     public override void PerfectEffect(GameObject monster)
     {
-        GameMgr.Instance.HealPlayer(30);
+        GameMgr.Instance.HealPlayer(GameMgr.Instance.GetPlayerMaxHP());
     }
 }

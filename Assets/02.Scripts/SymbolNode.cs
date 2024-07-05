@@ -6,29 +6,10 @@ using UnityEngine.UI;
 public class SymbolNode : MonoBehaviour
 {
     public Image symbolImg;
-    public GameObject informationPanel;
     public Symbol symbol;
 
-    protected virtual void Start()
+    void Start()
     {
-        symbolImg = GetComponent<Image>();
         symbolImg.sprite = symbol.sprite;
-    }
-
-    void Update()
-    {
-
-    }
-
-    private void OnMouseEnter()
-    {
-        informationPanel.SetActive(true);
-        informationPanel.GetComponent<SymbolInformationPanel>().SetNameText(symbol.symbolName);
-        informationPanel.GetComponent<SymbolInformationPanel>().SetDescriptionText(symbol.symbolDescription);
-    }
-
-    private void OnMouseExit()
-    {
-        informationPanel.SetActive(false);
     }
 }

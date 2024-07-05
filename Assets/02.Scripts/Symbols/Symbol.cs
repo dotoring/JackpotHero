@@ -6,8 +6,12 @@ using UnityEngine;
 public abstract class Symbol : MonoBehaviour
 {
     public string symbolName;
-    [TextArea(3, 7)]
-    public string symbolDescription;
+    [TextArea]
+    public string symbolBasicDescription;
+    [TextArea]
+    public string symbolPairDescription;
+    [TextArea]
+    public string symbolPerfectDescription;
     public int basicDmg;
     public Sprite sprite;
 

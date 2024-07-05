@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,7 +14,8 @@ public class RewardSymbolNode : MonoBehaviour
     public Image symbolImg;
     public Text nameText;
     public Text dmgText;
-    public Text descriptionText;
+    public TextMeshProUGUI pairText;
+    public TextMeshProUGUI perfectText;
 
     Button selectBtn;
 
@@ -25,7 +27,8 @@ public class RewardSymbolNode : MonoBehaviour
         symbolImg.sprite = symbol.sprite;
         nameText.text = symbol.symbolName;
         dmgText.text = symbol.basicDmg.ToString();
-        descriptionText.text = symbol.symbolDescription;
+        pairText.text = symbol.symbolPairDescription;
+        perfectText.text = symbol.symbolPerfectDescription;
 
         if (selectBtn != null)
         {

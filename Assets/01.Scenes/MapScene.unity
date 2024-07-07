@@ -854,12 +854,12 @@ MonoBehaviour:
   playerGold: 0
   playerOwnSymbols: []
   entireSymbols:
-  - {fileID: 706835808717645957, guid: 7805bb281a2a01d41aaba879c6f07bed, type: 3}
-  - {fileID: 7228315198001064359, guid: 1f835de369684a247bfa05550e49717c, type: 3}
-  - {fileID: 7265357885765429753, guid: b5229ecce24aca4479a145b9a6ced635, type: 3}
-  - {fileID: 7944820589665149643, guid: f7c9cd12fb70e1446840b2d08e2eab65, type: 3}
-  - {fileID: 8482044905015290470, guid: 5b47334335340fe4a9598d6beabf1c18, type: 3}
   - {fileID: 4730626077067661535, guid: a71e6c2612add1a43aa8103b9403de28, type: 3}
+  - {fileID: 8482044905015290470, guid: 5b47334335340fe4a9598d6beabf1c18, type: 3}
+  - {fileID: 7228315198001064359, guid: 1f835de369684a247bfa05550e49717c, type: 3}
+  - {fileID: 706835808717645957, guid: 7805bb281a2a01d41aaba879c6f07bed, type: 3}
+  - {fileID: 7944820589665149643, guid: f7c9cd12fb70e1446840b2d08e2eab65, type: 3}
+  - {fileID: 7265357885765429753, guid: b5229ecce24aca4479a145b9a6ced635, type: 3}
   - {fileID: 669338108775362576, guid: 6bc6136a96dcc744ab4479b17dbba29c, type: 3}
   - {fileID: 1035597342168043332, guid: c4f2569bba7d76c4b8de333ee5abe7dd, type: 3}
   - {fileID: 5596938358969904748, guid: 9cc055fc380c2314eb330cd05ec7cf42, type: 3}

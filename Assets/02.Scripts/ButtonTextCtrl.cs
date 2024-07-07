@@ -9,6 +9,15 @@ public class ButtonTextCtrl : MonoBehaviour, IPointerDownHandler, IPointerUpHand
 {
     public TextMeshProUGUI text;
 
+    private void Update()
+    {
+        Button button = GetComponent<Button>();
+        if(!button.IsActive())
+        {
+            text.transform.localPosition = new Vector3(0, -21.125f);
+        }
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         text.transform.localPosition = new Vector3(0, -21.125f);

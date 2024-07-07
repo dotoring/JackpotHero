@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -8,17 +9,17 @@ using UnityEngine.UI;
 public class ResetSceneMgr : MonoBehaviour
 {
     GameMgr gameMgr;
+    public SymbolScrollCtrl symbolScrollCtrl;
+    public GameObject ownSymbolsPanel;
 
     public Button recoverBtn;
-    public Button discardBtn;
-
-    public GameObject SymbolListPanel;
+    public Button discardSelectBtn;
+    public Button discardSymbolBtn;
 
     [Header("UI")]
     public TextMeshProUGUI playerHp;
     public TextMeshProUGUI playerBarrier;
     public GameObject playerBarrierUI;
-    public Text playerGoldText;
 
 
     void Start()
@@ -33,16 +34,25 @@ public class ResetSceneMgr : MonoBehaviour
             });
         }
 
-        if(discardBtn != null)
+        if(discardSymbolBtn != null)
         {
-            discardBtn.onClick.AddListener(ClickDiscardBtn);
+            discardSymbolBtn.onClick.AddListener(DiscardSymbol);
         }
+
+        if(discardSelectBtn != null)
+        {
+            discardSelectBtn.onClick.AddListener(ShowDiscardSymbolPanel);
+        }
+    }
+
+    void ShowDiscardSymbolPanel()
+    {
+        discardSymbolBtn.gameObject.SetActive(true);
     }
 
     void Update()
     {
         playerHp.text = gameMgr.GetPlayerCurHP().ToString();
-        playerGoldText.text = gameMgr.GetGoldAmount().ToString();
         playerBarrier.text = gameMgr.GetBarrier().ToString();
         if (gameMgr.GetBarrier() > 0)
         {
@@ -51,6 +61,11 @@ public class ResetSceneMgr : MonoBehaviour
         else
         {
             playerBarrierUI.SetActive(false);
+        }
+
+        if(!ownSymbolsPanel.activeSelf)
+        {
+            discardSymbolBtn.gameObject.SetActive(false);
         }
     }
 
@@ -67,8 +82,9 @@ public class ResetSceneMgr : MonoBehaviour
         yield return null;
     }
 
-    void ClickDiscardBtn()
+    void DiscardSymbol()
     {
-        SymbolListPanel.SetActive(true);
+        Symbol symbol = symbolScrollCtrl.GetCurSymbol();
+        gameMgr.RemovePlayerSymbol(symbol);
     }
 }

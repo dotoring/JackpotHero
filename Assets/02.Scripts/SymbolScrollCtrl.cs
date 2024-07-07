@@ -12,6 +12,7 @@ public class SymbolScrollCtrl : MonoBehaviour
     private float itemHeight;
 
     private SymbolNode cursymbol;
+    public int count = 1;
 
     void Start()
     {
@@ -84,6 +85,12 @@ public class SymbolScrollCtrl : MonoBehaviour
         Vector2 newPosition = content.anchoredPosition;
         newPosition.y = newPosition.y - itemHeight;
         content.anchoredPosition = newPosition;
+
+        count--;
+        if(count == 0)
+        {
+            count = GameMgr.Instance.GetPlayerOwnSymbols().Count;
+        }
     }
 
     public void ScrollDown()
@@ -91,6 +98,12 @@ public class SymbolScrollCtrl : MonoBehaviour
         Vector2 newPosition = content.anchoredPosition;
         newPosition.y = newPosition.y + itemHeight;
         content.anchoredPosition = newPosition;
+
+        count++;
+        if (count == GameMgr.Instance.GetPlayerOwnSymbols().Count + 1)
+        {
+            count = 1;
+        }
     }
 
     private void MoveToEnd()

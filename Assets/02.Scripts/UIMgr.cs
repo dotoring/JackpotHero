@@ -11,9 +11,11 @@ public class UIMgr : MonoBehaviour
     [Header("Symbols")]
     public GameObject ownSymbolsPanel;
     public Button symbolsInventoryBtn;
+    public Button inventoryCloseBtn;
     public GameObject ownSymbolGridLayout;
     public GameObject symbolNodePref;
     public SymbolScrollCtrl symbolScrollCtrl;
+    public TextMeshProUGUI symbolCount;
 
     [Space (10f)]
     public TextMeshProUGUI symbolNameText;
@@ -39,6 +41,11 @@ public class UIMgr : MonoBehaviour
         {
             symbolsInventoryBtn.onClick.AddListener(ShowSymbols);
         }
+
+        if (inventoryCloseBtn != null)
+        {
+            inventoryCloseBtn.onClick.AddListener(ShowSymbols);
+        }
     }
 
     void Update()
@@ -48,12 +55,32 @@ public class UIMgr : MonoBehaviour
         {
             ShowSymbolInformation();
         }
+
+        CountSymbol();
     }
 
     //보유 심볼 생성 함수
     void GenerateOwnSymbols()
     {
         List<Symbol> Symbols = new List<Symbol>(gameMgr.GetPlayerOwnSymbols());
+        if (Symbols.Count < 4)
+        {
+            foreach (Symbol symbol in Symbols)
+            {
+                GameObject symbolNode = Instantiate(symbolNodePref);
+                symbolNode.transform.SetParent(ownSymbolGridLayout.transform, false);
+                symbolNode.GetComponent<SymbolNode>().symbol = symbol;
+            }
+        }
+        if (Symbols.Count < 7)
+        {
+            foreach (Symbol symbol in Symbols)
+            {
+                GameObject symbolNode = Instantiate(symbolNodePref);
+                symbolNode.transform.SetParent(ownSymbolGridLayout.transform, false);
+                symbolNode.GetComponent<SymbolNode>().symbol = symbol;
+            }
+        }
         foreach (Symbol symbol in Symbols)
         {
             GameObject symbolNode = Instantiate(symbolNodePref);
@@ -87,6 +114,11 @@ public class UIMgr : MonoBehaviour
             symbolPairEffectText.text = symbol.symbolPairDescription;
             symbolPerfectEffectText.text = symbol.symbolPerfectDescription;
         }
+    }
+
+    void CountSymbol()
+    {
+        symbolCount.text = symbolScrollCtrl.count + "/" + (gameMgr.GetPlayerOwnSymbols().Count);
     }
 
     //유물 표시

@@ -175,6 +175,18 @@ public class GameMgr : MonoBehaviour
         }
     }
 
+    public void RemovePlayerSymbol(Symbol symbol)
+    {
+        for(int i = playerOwnSymbols.Count -1; i >= 0; i--)
+        {
+            if (playerOwnSymbols[i] == symbol)
+            {
+                playerOwnSymbols.RemoveAt(i);
+                return;
+            }
+        }
+    }
+
     //게임 내 전체 심볼 리스트 get함수
     public List<Symbol> GetEntireSymbols()
     {

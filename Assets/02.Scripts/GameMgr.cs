@@ -138,6 +138,11 @@ public class GameMgr : MonoBehaviour
         playerGold += val;
     }
 
+    public void useGold(int val)
+    {
+        playerGold -= val;
+    }
+
     //플레이어 보유 심볼 리스트 get함수
     public List<Symbol> GetPlayerOwnSymbols()
     {

@@ -3710,6 +3710,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ownSymbolsPanel: {fileID: 1068704857}
   symbolsInventoryBtn: {fileID: 179424075}
+  inventoryCloseBtn: {fileID: 0}
   ownSymbolGridLayout: {fileID: 2078071469}
   symbolNodePref: {fileID: 3379249014816759540, guid: f122f4a5a42330046a338b505ddf4fdc, type: 3}
   symbolScrollCtrl: {fileID: 890129505}

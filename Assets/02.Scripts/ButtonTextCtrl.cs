@@ -3,24 +3,27 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class ButtonTextCtrl : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    public TextMeshProUGUI text;
-
-    private void Update()
+    enum Usage
     {
-        Button button = GetComponent<Button>();
-        if(!button.IsActive())
-        {
-            text.transform.localPosition = new Vector3(0, -21.125f);
-        }
+        Rest,
+        Shop
     }
+    public TextMeshProUGUI text;
+    [SerializeField] Usage buttonUsage;
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        text.transform.localPosition = new Vector3(0, -21.125f);
+        if(buttonUsage == Usage.Rest)
+        {
+            text.transform.localPosition = new Vector3(0, -21.125f);
+        }
+        else if(buttonUsage == Usage.Shop)
+        {
+            text.transform.localPosition = new Vector3(0, -11.75f);
+        }
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -28,3 +31,4 @@ public class ButtonTextCtrl : MonoBehaviour, IPointerDownHandler, IPointerUpHand
         text.transform.localPosition = new Vector3(0, 7f);
     }
 }
+

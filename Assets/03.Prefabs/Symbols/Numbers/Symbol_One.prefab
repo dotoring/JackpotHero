@@ -50,3 +50,4 @@ MonoBehaviour:
   symbolPerfectDescription: "10\uC758 \uCD94\uAC00 \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4."
   basicDmg: 1
   sprite: {fileID: 21300000, guid: f5e6fa3c86cdabe43902677784ec2607, type: 3}
+  symbolPrice: 5

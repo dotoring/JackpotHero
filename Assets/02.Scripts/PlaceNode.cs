@@ -43,7 +43,7 @@ public class PlaceNode : MonoBehaviour
                 SceneManager.LoadScene("BattleScene");
                 break;
             case PlaceType.Rest:
-                SceneManager.LoadScene("RestTempScene");
+                SceneManager.LoadScene("RestScene");
                 break;
             case PlaceType.Shop:
                 SceneManager.LoadScene("ShopTempScene");

@@ -14,6 +14,7 @@ public abstract class Symbol : MonoBehaviour
     public string symbolPerfectDescription;
     public int basicDmg;
     public Sprite sprite;
+    public int symbolPrice;
 
     /// <summary>
     /// dmg = 해당 심볼의 최종 피해량

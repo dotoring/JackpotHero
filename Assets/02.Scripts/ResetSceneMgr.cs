@@ -36,7 +36,10 @@ public class ResetSceneMgr : MonoBehaviour
 
         if(discardSymbolBtn != null)
         {
-            discardSymbolBtn.onClick.AddListener(DiscardSymbol);
+            discardSymbolBtn.onClick.AddListener(() =>
+            {
+                StartCoroutine(DiscardSymbol());
+            });
         }
 
         if(discardSelectBtn != null)
@@ -73,6 +76,8 @@ public class ResetSceneMgr : MonoBehaviour
     {
         gameMgr.HealPlayer((int)(gameMgr.GetPlayerMaxHP() / 2));
 
+        discardSelectBtn.interactable = false;
+        recoverBtn.interactable = false;
         //회복 애니메이션
         Debug.Log("뾰로롱");
         yield return new WaitForSeconds(1.0f);
@@ -82,9 +87,20 @@ public class ResetSceneMgr : MonoBehaviour
         yield return null;
     }
 
-    void DiscardSymbol()
+    IEnumerator DiscardSymbol()
     {
         Symbol symbol = symbolScrollCtrl.GetCurSymbol();
         gameMgr.RemovePlayerSymbol(symbol);
+
+        ownSymbolsPanel.SetActive(false);
+        discardSelectBtn.interactable = false;
+        recoverBtn.interactable = false;
+
+        //심볼 삭제 애니메이션
+        yield return new WaitForSeconds(1.0f);
+
+        SceneManager.LoadScene("MapScene");
+
+        yield return null;
     }
 }

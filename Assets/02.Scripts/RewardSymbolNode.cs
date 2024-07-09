@@ -12,8 +12,8 @@ public class RewardSymbolNode : MonoBehaviour
 
     [Header("UI")]
     public Image symbolImg;
-    public Text nameText;
-    public Text dmgText;
+    public TextMeshProUGUI nameText;
+    public TextMeshProUGUI dmgText;
     public TextMeshProUGUI pairText;
     public TextMeshProUGUI perfectText;
 
@@ -45,9 +45,9 @@ public class RewardSymbolNode : MonoBehaviour
         }
     }
 
-    void AddSymbol()
+    protected virtual void AddSymbol()
     {
-        GameObject.Find("GameMgr").GetComponent<GameMgr>().AddPlayerSymbol(symbol);
+        GameMgr.Instance.AddPlayerSymbol(symbol);
         battleMgr.ChangeRewardState();
         Debug.Log(symbol.symbolName + " Ãß°¡");
     }

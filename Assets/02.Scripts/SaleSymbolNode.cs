@@ -27,6 +27,14 @@ public class SaleSymbolNode : MonoBehaviour
         dmgText.text = symbol.basicDmg.ToString();
         pairText.text = symbol.symbolPairDescription;
         perfectText.text = symbol.symbolPerfectDescription;
+
+        //<<<vip카드 효과
+        if(GameMgr.Instance.vipCard)
+        {
+            symbol.symbolPrice = (int)(symbol.symbolPrice * 0.8f); 
+        }
+        //vip카드 효과>>>
+
         price.text = symbol.symbolPrice.ToString();
 
         if (selectBtn != null)

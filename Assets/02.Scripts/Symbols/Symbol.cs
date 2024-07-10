@@ -24,7 +24,17 @@ public abstract class Symbol : MonoBehaviour
     public void AttackEnemy(GameObject monster, int dmg)
     {
         Debug.Log(dmg + "+" + GameObject.Find("BattleMgr").GetComponent<BattleMgr>().power + "의 피해");
-        monster.GetComponent<Enemy>().TakeDmgEnemy(dmg + GameObject.Find("BattleMgr").GetComponent<BattleMgr>().power);
+
+        if(GameMgr.Instance.powerOfCapital) //자본의 힘 효과
+        {
+            monster.GetComponent<Enemy>().TakeDmgEnemy(dmg + 
+                GameObject.Find("BattleMgr").GetComponent<BattleMgr>().power +
+                (GameMgr.Instance.GetGoldAmount() / 100));
+        }
+        else
+        {
+            monster.GetComponent<Enemy>().TakeDmgEnemy(dmg + GameObject.Find("BattleMgr").GetComponent<BattleMgr>().power);
+        }
     }
 
     public virtual void BasicEffect(GameObject monster)

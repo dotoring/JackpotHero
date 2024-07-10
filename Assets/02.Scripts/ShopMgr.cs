@@ -28,7 +28,14 @@ public class ShopMgr : MonoBehaviour
 
         GenSaleSymbols();
 
-        if(shopOpenButton != null)
+        //<<<vip카드효과
+        if(gameMgr.vipCard)
+        {
+            discardPrice = (int)(discardPrice * 0.8f);
+        }
+        //vip카드효과>>>
+
+        if (shopOpenButton != null)
         {
             shopOpenButton.onClick.AddListener(() =>
             {

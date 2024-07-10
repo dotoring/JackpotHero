@@ -12,6 +12,8 @@ public class BattleMgr : MonoBehaviour
     public Button rollBtn;
 
     public IBattleState curState;
+    public int rollCount;
+    bool isRolled;
 
     public GameObject resultPanelWin;
     public GameObject resultPanelLose;
@@ -53,6 +55,9 @@ public class BattleMgr : MonoBehaviour
     public TextMeshProUGUI playerBarrier;
     public GameObject playerBarrierUI;
 
+    [Header("for Artifacts")]
+    [SerializeField] Condition powerUp;
+
     void Start()
     {
         gameMgr = GameMgr.Instance;
@@ -60,11 +65,20 @@ public class BattleMgr : MonoBehaviour
 
         SpawnEnemy();
         GenerateReward();
+        ChangeState(new TurnStartState());
+        rollCount = 0;
+
+        if(gameMgr.muscle)
+        {
+            AddPlayerCondition(powerUp, 1);
+        }
 
         if (rollBtn != null)
         {
             rollBtn.onClick.AddListener(() =>
             {
+                isRolled = true; //공격 상대 고정을 위해
+                rollCount++;
                 SlotMachineOff();
                 slotMachine.RollSlotMachine(this);
             });
@@ -118,7 +132,10 @@ public class BattleMgr : MonoBehaviour
     //공격 대상 설정 함수
     public void SetTargetEnemy(GameObject go)
     {
-        targetEnemy = go;
+        if(!isRolled) //룰렛 돌린 후엔 공격 상태 변경 불가
+        {
+            targetEnemy = go;
+        }
     }
 
     public List<Enemy> GetEnemies()
@@ -270,7 +287,7 @@ public class BattleMgr : MonoBehaviour
             }
         }
 
-        //컨디션 지속기간 감소
+        //상태효과 지속기간 감소
         foreach(Condition condition in conditions)
         {
             if(condition.isEffected)
@@ -296,6 +313,7 @@ public class BattleMgr : MonoBehaviour
             }
         }
 
+        //상태효과 UI 초기화
         RefreshConditionLayout();
 
         Debug.Log("전투 상태 체크");
@@ -316,6 +334,10 @@ public class BattleMgr : MonoBehaviour
         {
             Debug.LogError("wrong battle result");
         }
+
+        isRolled = false; //공격 대상 선택 가능하도록
+        rollCount = 0; //롤 횟수 초기화
+
         yield return null;
     }
 
@@ -352,7 +374,7 @@ public class BattleMgr : MonoBehaviour
         List<Symbol> rewards = new List<Symbol>();
 
         List<Symbol> entireSymbols = new List<Symbol>(gameMgr.GetEntireSymbols());
-        for (int i = 0; i < gameMgr.rewardCount;) //등장할 수 있는 보상 수 만큼 반복
+        for (int i = 0; i < gameMgr.rewardCount + (gameMgr.gamblerSensor ? 1 : 0);) //등장할 수 있는 보상 수 만큼 반복
         {
             int ran = Random.Range(0, entireSymbols.Count);
             if (rewards.Contains(entireSymbols[ran])) //중복이면 다시 뽑기
@@ -377,12 +399,12 @@ public class BattleMgr : MonoBehaviour
         rewardGold = Random.Range(10, 21);
         goldEarnAmountText.text = rewardGold.ToString() + "골드";
 
-        //유물 보상 ====================임시=================
-        //List<Artifact> artifacts = GameMgr.Instance.GetEntireArtifacts();
-        //Artifact artifact = artifacts[Random.Range(0, artifacts.Count)];
-        //GameObject rewardArtifact = Instantiate(rewardArtifactNodePref);
-        //rewardArtifact.GetComponent<RewardArtifactNode>().artifact = artifact;
-        //rewardArtifact.transform.SetParent(rewardArtifactPosition.transform, false);
+        //유물 보상 ==================== 임시 =================
+        List<Artifact> artifacts = GameMgr.Instance.GetEntireArtifacts();
+        Artifact artifact = artifacts[Random.Range(0, artifacts.Count)];
+        GameObject rewardArtifact = Instantiate(rewardArtifactNodePref);
+        rewardArtifact.GetComponent<RewardArtifactNode>().artifact = artifact;
+        rewardArtifact.transform.SetParent(rewardArtifactPosition.transform, false);
     }
 
     public bool GetRewardState()

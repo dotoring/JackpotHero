@@ -872,8 +872,16 @@ MonoBehaviour:
   wheelNumber: 3
   playerOwnArtifacts: []
   entireArtifacts:
-  - {fileID: 6396861256322567636, guid: 76d14d048178ede44a0c9b8578319282, type: 3}
+  - {fileID: 649703244324064050, guid: 5dece9cecaee6744ab16da1b9170c669, type: 3}
   rewardCount: 3
+  maxRoll: 1
+  goldenSlot: 0
+  muscle: 0
+  gamblerSensor: 0
+  vipCard: 0
+  powerOfCapital: 0
+  luckyShield: 0
+  steadyMind: 0
 --- !u!4 &1304599744
 Transform:
   m_ObjectHideFlags: 0

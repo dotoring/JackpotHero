@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class Artifact : MonoBehaviour
 {
     [SerializeField] string artifactName;
+    [TextArea]
     [SerializeField] string artifactDescription;
     [SerializeField] Sprite artifactSprite;
 

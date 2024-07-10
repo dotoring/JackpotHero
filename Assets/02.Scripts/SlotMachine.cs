@@ -14,6 +14,7 @@ public class SlotMachine : MonoBehaviour
     Dictionary<Symbol, int> symbolCounts = new Dictionary<Symbol, int>();
     public List<Image> wheels;
 
+    public Button attackBtn;
 
     void Start()
     {
@@ -21,6 +22,16 @@ public class SlotMachine : MonoBehaviour
 
         //보유 심볼들 가져오기
         symbols = gameMgr.GetPlayerOwnSymbols();
+
+        //공격 버튼 누르면 효과발동
+        if(attackBtn != null)
+        {
+            attackBtn.onClick.AddListener(() =>
+            {
+                StartCoroutine(ExecuteResult());
+                attackBtn.gameObject.SetActive(false);
+            });
+        }
     }
 
     public void RollSlotMachine(BattleMgr battleMgr)
@@ -55,7 +66,18 @@ public class SlotMachine : MonoBehaviour
             }
         }
 
-        StartCoroutine(ExecuteResult());
+        if(battleMgr.rollCount == gameMgr.maxRoll) //리롤이 없으면 바로 효과 발동
+        {
+            attackBtn.gameObject.SetActive(false);
+            StartCoroutine(ExecuteResult());
+        }
+        else
+        {
+            //리롤이 있다면 공격 버튼 활성화(공격할지 리롤할지 결정)
+            attackBtn.gameObject.SetActive(true);
+            //롤 버튼도 활성화
+            battleMgr.SlotMachineOn();
+        }
     }
 
     public IEnumerator ExecuteResult()
@@ -63,57 +85,96 @@ public class SlotMachine : MonoBehaviour
         //결과 확인 및 효과 발동
         bool isDuplicate = false;
         Symbol highest = null;
-        foreach (KeyValuePair<Symbol, int> pair in symbolCounts)
-        {
-            //중복이 없는 심볼일 경우
-            if (pair.Value == 1)
-            {
-                //중복이 없는 결과를 위해 기본 데미지가 가장 큰 심볼 저장
-                if (highest == null)
-                {
-                    highest = pair.Key;
-                }
-                else if (highest.basicDmg < pair.Key.basicDmg)
-                {
-                    highest = pair.Key;
-                }
-            }
 
-            //중복된 심볼일 경우
-            if (pair.Value > 1)
+        if(gameMgr.steadyMind) //건실한 정신 유물 효과
+        {
+            int dmg = 0;
+            foreach(KeyValuePair<Symbol, int> pair in symbolCounts)
             {
-                isDuplicate = true;
-                //중복 수와 휠의 수가 같을 경우 => 모두 같은 심볼일 경우
-                if (pair.Value == wheels.Count)
-                {
-                    yield return new WaitForSeconds(0.2f);
-                    battleMgr.playerAttackEffect.SetActive(true);
-                    //퍼펙트 효과 발동
-                    pair.Key.PerfectEffect(battleMgr.targetEnemy);
-                    yield return new WaitForSeconds(0.2f);
-                    battleMgr.playerAttackEffect.SetActive(false);
-                }
-                else
-                {
-                    yield return new WaitForSeconds(0.2f);
-                    battleMgr.playerAttackEffect.SetActive(true);
-                    //중복 효과 발동
-                    pair.Key.DuplicationEffect(pair.Value, battleMgr.targetEnemy);
-                    yield return new WaitForSeconds(0.2f);
-                    battleMgr.playerAttackEffect.SetActive(false);
-                }
+                dmg += pair.Key.basicDmg * pair.Value;
             }
+            battleMgr.targetEnemy.GetComponent<Enemy>().TakeDmgEnemy(dmg);
         }
-
-        //중복된 심볼이 하나도 없을 경우
-        if (!isDuplicate)
+        else
         {
-            yield return new WaitForSeconds(0.2f);
-            battleMgr.playerAttackEffect.SetActive(true);
-            //기본 데미지가 가장 큰 심볼의 기본 효과 발동
-            highest.BasicEffect(battleMgr.targetEnemy);
-            yield return new WaitForSeconds(0.2f);
-            battleMgr.playerAttackEffect.SetActive(false);
+            foreach (KeyValuePair<Symbol, int> pair in symbolCounts)
+            {
+                //중복이 없는 심볼일 경우
+                if (pair.Value == 1)
+                {
+                    //중복이 없는 결과를 위해 기본 데미지가 가장 큰 심볼 저장
+                    if (highest == null)
+                    {
+                        highest = pair.Key;
+                    }
+                    else if (highest.basicDmg < pair.Key.basicDmg)
+                    {
+                        highest = pair.Key;
+                    }
+                }
+
+                //중복된 심볼일 경우
+                if (pair.Value > 1)
+                {
+                    isDuplicate = true;
+                    //중복 수와 휠의 수가 같을 경우 => 모두 같은 심볼일 경우
+                    if (pair.Value == wheels.Count)
+                    {
+                        //<<<황금슬롯 아티팩트 효과
+                        if (gameMgr.goldenSlot)
+                        {
+                            gameMgr.earnGold(20);
+                        }
+                        //황금슬롯 아티팩트 효과>>>
+                        //<<<행운방패 아티팩트 효과
+                        if (gameMgr.luckyShield)
+                        {
+                            gameMgr.AddBarrier(10);
+                        }
+                        //행운방패 아티팩트 효과>>>
+
+                        yield return new WaitForSeconds(0.2f);
+                        battleMgr.playerAttackEffect.SetActive(true);
+                        //퍼펙트 효과 발동
+                        pair.Key.PerfectEffect(battleMgr.targetEnemy);
+                        yield return new WaitForSeconds(0.2f);
+                        battleMgr.playerAttackEffect.SetActive(false);
+                    }
+                    else
+                    {
+                        //<<<황금슬롯 아티팩트 효과
+                        if (gameMgr.goldenSlot)
+                        {
+                            gameMgr.earnGold(5);
+                        }
+                        //황금슬롯 아티팩트 효과>>>
+                        //<<<행운방패 아티팩트 효과
+                        if (gameMgr.luckyShield)
+                        {
+                            gameMgr.AddBarrier(3);
+                        }
+                        //행운방패 아티팩트 효과>>>
+
+                        yield return new WaitForSeconds(0.2f);
+                        battleMgr.playerAttackEffect.SetActive(true);
+                        //중복 효과 발동
+                        pair.Key.DuplicationEffect(pair.Value, battleMgr.targetEnemy);
+                        yield return new WaitForSeconds(0.2f);
+                        battleMgr.playerAttackEffect.SetActive(false);
+                    }
+                }
+            }
+
+            //중복된 심볼이 하나도 없을 경우
+            if (!isDuplicate)
+            {
+                yield return new WaitForSeconds(0.2f);
+                battleMgr.playerAttackEffect.SetActive(true);
+                //기본 데미지가 가장 큰 심볼의 기본 효과 발동
+                highest.BasicEffect(battleMgr.targetEnemy);
+                yield return new WaitForSeconds(0.2f);
+                battleMgr.playerAttackEffect.SetActive(false);
+            }
         }
 
         battleMgr.ChangeState(new PlayerTurnEndState());

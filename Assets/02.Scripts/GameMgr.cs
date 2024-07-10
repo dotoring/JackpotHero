@@ -20,6 +20,16 @@ public class GameMgr : MonoBehaviour
 
     public int rewardCount;
 
+    [Header("Artifacts")]
+    public int maxRoll;
+    public bool goldenSlot;
+    public bool muscle;
+    public bool gamblerSensor;
+    public bool vipCard;
+    public bool powerOfCapital;
+    public bool luckyShield;
+    public bool steadyMind;
+
     private void Awake()
     {
         // 싱글톤 인스턴스가 없으면 현재 인스턴스로 설정

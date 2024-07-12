@@ -99,7 +99,14 @@ public class BattleEndState : IBattleState
         Debug.Log("승부 결과에 따른 결과창");
         if(isWin)
         {
-            battleMgr.resultPanelWin.SetActive(true);
+            if(GameMgr.Instance.isElite)
+            {
+                battleMgr.artifactRewardsPanel.SetActive(true);
+            }
+            else
+            {
+                battleMgr.resultPanelWin.SetActive(true);
+            }
         }
         else
         {

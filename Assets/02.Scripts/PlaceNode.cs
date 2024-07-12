@@ -34,19 +34,21 @@ public class PlaceNode : MonoBehaviour
         switch (place.placeType)
         {
             case PlaceType.Battle:
+                GameMgr.Instance.isElite = false;
                 SceneManager.LoadScene("BattleScene");
                 break;
             case PlaceType.Event:
                 SceneManager.LoadScene("EventTempScene");
                 break;
             case PlaceType.Elite:
+                GameMgr.Instance.isElite = true;
                 SceneManager.LoadScene("BattleScene");
                 break;
             case PlaceType.Rest:
                 SceneManager.LoadScene("RestScene");
                 break;
             case PlaceType.Shop:
-                SceneManager.LoadScene("ShopTempScene");
+                SceneManager.LoadScene("ShopScene");
                 break;
             case PlaceType.Treasure:
                 SceneManager.LoadScene("TreasureTempScene");

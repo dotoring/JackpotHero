@@ -1222,7 +1222,7 @@ MonoBehaviour:
   dmgText: {fileID: 6644353337514246178}
   pairText: {fileID: 1714513924310760029}
   perfectText: {fileID: 5940678019347458288}
-  price: {fileID: 3318285441533177044}
+  priceText: {fileID: 3318285441533177044}
 --- !u!114 &8457240594692353906
 MonoBehaviour:
   m_ObjectHideFlags: 0

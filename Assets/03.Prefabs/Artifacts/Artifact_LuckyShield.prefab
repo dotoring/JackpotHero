@@ -47,4 +47,5 @@ MonoBehaviour:
   artifactName: "\uD589\uC6B4\uBC29\uD328"
   artifactDescription: "\uC911\uBCF5 \uC2DC 3, \uD37C\uD399\uD2B8 \uC2DC 10\uC758
     \uD53C\uD574\uB97C \uBC29\uC5B4\uD569\uB2C8\uB2E4."
-  artifactSprite: {fileID: 0}
+  artifactSprite: {fileID: 21300000, guid: 1034b638c7a0a6d4c9fdebe95180a351, type: 3}
+  artifactPrice: 30

@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/01.Scenes/MapScene.unity
     guid: 2d481d14d1e29954c9a93f33ec05494e
   - enabled: 1
-    path: Assets/01.Scenes/ShopTempScene.unity
+    path: Assets/01.Scenes/ShopScene.unity
     guid: 1361675402a1d68498106aaa0bba5c77
   - enabled: 1
     path: Assets/01.Scenes/EventTempScene.unity

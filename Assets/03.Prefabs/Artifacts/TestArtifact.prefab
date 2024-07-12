@@ -47,3 +47,4 @@ MonoBehaviour:
   artifactName: feather
   artifactDescription: playerMaxHp +15
   artifactSprite: {fileID: 21300000, guid: 593e0c07464c39247b1dc9173f2576c1, type: 3}
+  artifactPrice: 30

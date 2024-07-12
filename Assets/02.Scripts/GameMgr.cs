@@ -20,6 +20,9 @@ public class GameMgr : MonoBehaviour
 
     public int rewardCount;
 
+    [Header("Battle")]
+    public bool isElite;
+
     [Header("Artifacts")]
     public int maxRoll;
     public bool goldenSlot;

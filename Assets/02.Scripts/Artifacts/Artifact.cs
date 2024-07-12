@@ -8,6 +8,7 @@ public abstract class Artifact : MonoBehaviour
     [TextArea]
     [SerializeField] string artifactDescription;
     [SerializeField] Sprite artifactSprite;
+    [SerializeField] int artifactPrice;
 
     public abstract void InvokeArtifact();
 
@@ -24,5 +25,10 @@ public abstract class Artifact : MonoBehaviour
     public Sprite GetArtifactSprite()
     {
         return artifactSprite;
+    }
+
+    public int GetArtifactPrice()
+    {
+        return artifactPrice;
     }
 }

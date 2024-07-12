@@ -3,24 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class RewardArtifactNode : MonoBehaviour
+public class RewardArtifactNode : ArtifactNode
 {
     Button button;
-    Image image;
-    public Artifact artifact;
+    public BattleMgr battleMgr = null;
+    ArtifactRewardPanel rewardPanel = null;
 
     void Start()
     {
         button = GetComponent<Button>();
-        image = GetComponent<Image>();
+        img = GetComponent<Image>();
 
-        image.sprite = artifact.GetArtifactSprite();
+        img.sprite = artifact.GetArtifactSprite();
 
-        if(button != null )
+        uiMgr = GameObject.Find("UIMgr").GetComponent<UIMgr>();
+        rewardPanel = GetComponentInParent<ArtifactRewardPanel>();
+
+        if (button != null )
         {
             button.onClick.AddListener(() =>
             {
                 GameMgr.Instance.AddArtifact(artifact);
+                rewardPanel.HidePanel();
+                uiMgr.HideArtifactTooltip();
+                uiMgr.RefreshOwnArtifacts();
+
+                if(battleMgr != null )
+                {
+                    battleMgr.resultPanelWin.SetActive(true);
+                }
             });
         }
     }

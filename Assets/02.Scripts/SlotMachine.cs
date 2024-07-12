@@ -30,6 +30,7 @@ public class SlotMachine : MonoBehaviour
             {
                 StartCoroutine(ExecuteResult());
                 attackBtn.gameObject.SetActive(false);
+                battleMgr.SlotMachineOff();
             });
         }
     }

@@ -8,25 +8,36 @@ using UnityEngine.UI;
 public class ShopMgr : MonoBehaviour
 {
     GameMgr gameMgr;
-    public SymbolScrollCtrl symbolScrollCtrl;
-    public GameObject ownSymbolsPanel;
-
     public GameObject shopPanel;
     public Button shopOpenButton;
 
-    public GameObject saleSymbolNodePref;
-    public Transform saleLayout;
+    [Header("Symbol")]
+    public SymbolScrollCtrl symbolScrollCtrl;
+    public GameObject ownSymbolsPanel;
+
+    public GameObject symbolSaleNodePref;
+    public Transform symbolSaleLayout;
 
     public Button discardSelectBtn;
     public Button discardSymbolBtn;
     public TextMeshProUGUI discardPriceText;
     public int discardPrice;
 
+    [Header("Artifact")]
+    public GameObject artifactSaleNodePref;
+    public Transform artifactSaleLayout;
+
+    [Header("UI")]
+    public TextMeshProUGUI playerHp;
+    public TextMeshProUGUI playerBarrier;
+    public GameObject playerBarrierUI;
+
     void Start()
     {
         gameMgr = GameMgr.Instance;
 
         GenSaleSymbols();
+        GenSaleArtifacts();
 
         //<<<vip카드효과
         if(gameMgr.vipCard)
@@ -61,6 +72,17 @@ public class ShopMgr : MonoBehaviour
     {
         discardPriceText.text = discardPrice.ToString();
 
+        playerHp.text = gameMgr.GetPlayerCurHP().ToString();
+        playerBarrier.text = gameMgr.GetBarrier().ToString();
+        if (gameMgr.GetBarrier() > 0)
+        {
+            playerBarrierUI.SetActive(true);
+        }
+        else
+        {
+            playerBarrierUI.SetActive(false);
+        }
+
         if (!ownSymbolsPanel.activeSelf)
         {
             discardSymbolBtn.gameObject.SetActive(false);
@@ -90,10 +112,37 @@ public class ShopMgr : MonoBehaviour
         //뽑은 판매 심볼들 생성
         foreach (Symbol saleSymbol in sales)
         {
-            GameObject saleSymbolNode = Instantiate(saleSymbolNodePref);
-            saleSymbolNode.transform.SetParent(saleLayout, false);
-            //saleSymbolNode.GetComponent<SaleSymbolNode>().symbol = saleSymbol;
+            GameObject saleSymbolNode = Instantiate(symbolSaleNodePref);
+            saleSymbolNode.transform.SetParent(symbolSaleLayout, false);
             saleSymbolNode.GetComponentInChildren<SaleSymbolNode>().symbol = saleSymbol;
+        }
+    }
+
+    void GenSaleArtifacts()
+    {
+        //판매 유물 뽑기
+        List<Artifact> sales = new List<Artifact>();
+        List<Artifact> entireArtifacts = new List<Artifact>(gameMgr.GetEntireArtifacts());
+        for (int i = 0; i < 4;) //상점은 4개 제공
+        {
+            int ran = Random.Range(0, entireArtifacts.Count);
+            if (sales.Contains(entireArtifacts[ran])) //중복이면 다시 뽑기
+            {
+                continue;
+            }
+            else
+            {
+                sales.Add(entireArtifacts[ran]);
+                i++;
+            }
+        }
+
+        //뽑은 판매 유물들 생성
+        foreach (Artifact artifact in sales)
+        {
+            GameObject artifactSaleNode = Instantiate(artifactSaleNodePref);
+            artifactSaleNode.transform.SetParent(artifactSaleLayout, false);
+            artifactSaleNode.GetComponentInChildren<SaleArtifactNode>().artifact = artifact;
         }
     }
 

@@ -16,7 +16,7 @@ public class SaleSymbolNode : MonoBehaviour
     public TextMeshProUGUI perfectText;
 
     Button selectBtn;
-    public TextMeshProUGUI price;
+    public TextMeshProUGUI priceText;
 
     private void Start()
     {
@@ -28,22 +28,27 @@ public class SaleSymbolNode : MonoBehaviour
         pairText.text = symbol.symbolPairDescription;
         perfectText.text = symbol.symbolPerfectDescription;
 
+        int price;
         //<<<vip카드 효과
         if(GameMgr.Instance.vipCard)
         {
-            symbol.symbolPrice = (int)(symbol.symbolPrice * 0.8f); 
+            price = (int)(symbol.symbolPrice * 0.8f);
+            //vip카드 효과>>>
         }
-        //vip카드 효과>>>
+        else
+        {
+            price = symbol.symbolPrice;
+        }
 
-        price.text = symbol.symbolPrice.ToString();
+        priceText.text = price.ToString();
 
         if (selectBtn != null)
         {
-            selectBtn.onClick.AddListener(AddSymbol);
+            selectBtn.onClick.AddListener(BuySymbol);
         }
     }
 
-    void AddSymbol()
+    void BuySymbol()
     {
         if(GameMgr.Instance.GetGoldAmount() >= symbol.symbolPrice)
         {

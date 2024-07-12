@@ -15,6 +15,7 @@ public class BattleMgr : MonoBehaviour
     public int rollCount;
     bool isRolled;
 
+    public GameObject artifactRewardsPanel;
     public GameObject resultPanelWin;
     public GameObject resultPanelLose;
 
@@ -37,7 +38,7 @@ public class BattleMgr : MonoBehaviour
 
     [Header ("Rewards")]
     //보상
-    public GameObject rewardLayout;
+    public Transform rewardSymbolLayout;
     public GameObject rewardSymbolNodePref;
     bool isPlayerGotSymbol;
 
@@ -45,7 +46,7 @@ public class BattleMgr : MonoBehaviour
     public Button goldEarnBtn;
     public Text goldEarnAmountText;
 
-    public GameObject rewardArtifactPosition;
+    public Transform rewardArtifactLayout;
     public GameObject rewardArtifactNodePref;
 
     public Button nextStageBtn;
@@ -371,27 +372,26 @@ public class BattleMgr : MonoBehaviour
     public void GenerateReward()
     {
         //심볼 보상
-        List<Symbol> rewards = new List<Symbol>();
-
+        List<Symbol> symbolRewards = new List<Symbol>();
         List<Symbol> entireSymbols = new List<Symbol>(gameMgr.GetEntireSymbols());
         for (int i = 0; i < gameMgr.rewardCount + (gameMgr.gamblerSensor ? 1 : 0);) //등장할 수 있는 보상 수 만큼 반복
         {
             int ran = Random.Range(0, entireSymbols.Count);
-            if (rewards.Contains(entireSymbols[ran])) //중복이면 다시 뽑기
+            if (symbolRewards.Contains(entireSymbols[ran])) //중복이면 다시 뽑기
             {
                 continue;
             }
             else
             {
-                rewards.Add(entireSymbols[ran]);
+                symbolRewards.Add(entireSymbols[ran]);
                 i++;
             }
         }
 
-        foreach (Symbol reward in rewards)
+        foreach (Symbol reward in symbolRewards)
         {
             GameObject rewardSymbol = Instantiate(rewardSymbolNodePref);
-            rewardSymbol.transform.SetParent(rewardLayout.transform, false);
+            rewardSymbol.transform.SetParent(rewardSymbolLayout, false);
             rewardSymbol.GetComponent<RewardSymbolNode>().symbol = reward;
         }
 
@@ -399,12 +399,30 @@ public class BattleMgr : MonoBehaviour
         rewardGold = Random.Range(10, 21);
         goldEarnAmountText.text = rewardGold.ToString() + "골드";
 
-        //유물 보상 ==================== 임시 =================
-        List<Artifact> artifacts = GameMgr.Instance.GetEntireArtifacts();
-        Artifact artifact = artifacts[Random.Range(0, artifacts.Count)];
-        GameObject rewardArtifact = Instantiate(rewardArtifactNodePref);
-        rewardArtifact.GetComponent<RewardArtifactNode>().artifact = artifact;
-        rewardArtifact.transform.SetParent(rewardArtifactPosition.transform, false);
+        //유물 보상
+        List<Artifact> artifactRewards = new List<Artifact>();
+        List<Artifact> entireArtifacts = new List<Artifact>(gameMgr.GetEntireArtifacts());
+        for (int i = 0; i < gameMgr.rewardCount + (gameMgr.gamblerSensor ? 1 : 0);) //등장할 수 있는 보상 수 만큼 반복
+        {
+            int ran = Random.Range(0, entireArtifacts.Count);
+            if (artifactRewards.Contains(entireArtifacts[ran])) //중복이면 다시 뽑기
+            {
+                continue;
+            }
+            else
+            {
+                artifactRewards.Add(entireArtifacts[ran]);
+                i++;
+            }
+        }
+
+        foreach (Artifact reward in artifactRewards)
+        {
+            GameObject rewardArtifact = Instantiate(rewardArtifactNodePref);
+            rewardArtifact.transform.SetParent(rewardArtifactLayout, false);
+            rewardArtifact.GetComponent<RewardArtifactNode>().artifact = reward;
+            rewardArtifact.GetComponent<RewardArtifactNode>().battleMgr = this;
+        }
     }
 
     public bool GetRewardState()

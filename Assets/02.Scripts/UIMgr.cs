@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor.Experimental;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,7 +13,7 @@ public class UIMgr : MonoBehaviour
     public GameObject ownSymbolsPanel;
     public Button symbolsInventoryBtn;
     public Button inventoryCloseBtn;
-    public GameObject ownSymbolGridLayout;
+    public Transform ownSymbolLayout;
     public GameObject symbolNodePref;
     public SymbolScrollCtrl symbolScrollCtrl;
     public TextMeshProUGUI symbolCount;
@@ -28,13 +29,15 @@ public class UIMgr : MonoBehaviour
 
     [Header("Artifacts")]
     public GameObject artifactNodePref;
-    public GameObject ownArtifactGridLayout;
+    public Transform ownArtifactGridLayout;
+    public GameObject artifactTooltipGO;
+
 
     void Start()
     {
         gameMgr = GameMgr.Instance;
 
-        ShowArtifacts();
+        RefreshOwnArtifacts();
         GenerateOwnSymbols();
 
         if (symbolsInventoryBtn != null)
@@ -68,7 +71,7 @@ public class UIMgr : MonoBehaviour
             foreach (Symbol symbol in Symbols)
             {
                 GameObject symbolNode = Instantiate(symbolNodePref);
-                symbolNode.transform.SetParent(ownSymbolGridLayout.transform, false);
+                symbolNode.transform.SetParent(ownSymbolLayout, false);
                 symbolNode.GetComponent<SymbolNode>().symbol = symbol;
             }
         }
@@ -77,14 +80,14 @@ public class UIMgr : MonoBehaviour
             foreach (Symbol symbol in Symbols)
             {
                 GameObject symbolNode = Instantiate(symbolNodePref);
-                symbolNode.transform.SetParent(ownSymbolGridLayout.transform, false);
+                symbolNode.transform.SetParent(ownSymbolLayout, false);
                 symbolNode.GetComponent<SymbolNode>().symbol = symbol;
             }
         }
         foreach (Symbol symbol in Symbols)
         {
             GameObject symbolNode = Instantiate(symbolNodePref);
-            symbolNode.transform.SetParent(ownSymbolGridLayout.transform, false);
+            symbolNode.transform.SetParent(ownSymbolLayout, false);
             symbolNode.GetComponent<SymbolNode>().symbol = symbol;
         }
         symbolScrollCtrl.RefreshSymbolScroll();
@@ -122,13 +125,34 @@ public class UIMgr : MonoBehaviour
     }
 
     //유물 표시
-    void ShowArtifacts()
+    public void RefreshOwnArtifacts()
     {
+        //있던 오브젝트들 지우기
+        foreach(Transform child in ownArtifactGridLayout)
+        {
+            Destroy(child.gameObject);
+        }
+
+        //보유 유물들 다시 생성하기
         foreach (Artifact artifact in gameMgr.GetArtifacts())
         {
             GameObject artifactNode = Instantiate(artifactNodePref);
             artifactNode.GetComponent<ArtifactNode>().artifact = artifact;
-            artifactNode.transform.SetParent(ownArtifactGridLayout.transform, false);
+            artifactNode.transform.SetParent(ownArtifactGridLayout, false);
         }
+    }
+
+    public void ShowAndSetArtifactTooltip(string name, string desc)
+    {
+        artifactTooltipGO.SetActive(true);
+        ArtifactTooltip artifactTooltip = artifactTooltipGO.GetComponent<ArtifactTooltip>();
+        artifactTooltip.SetArtifactNameText(name);
+        artifactTooltip.SetArtifactDescriptionText(desc);
+        artifactTooltip.UpdateLayout();
+    }
+
+    public void HideArtifactTooltip()
+    {
+        artifactTooltipGO.SetActive(false);
     }
 }

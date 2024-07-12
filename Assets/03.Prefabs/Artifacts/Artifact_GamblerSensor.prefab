@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31f80a2498ec371459d96eec4342e864, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  artifactName: 
-  artifactDescription: 
+  artifactName: "\uB3C4\uBC15\uC0AC\uC758 \uB208"
+  artifactDescription: "\uBAA8\uB4E0 \uC2EC\uBCFC \uBC0F \uC720\uBB3C \uBCF4\uC0C1\uC758
+    \uC120\uD0DD\uC9C0\uAC00 1 \uB298\uC5B4\uB0A9\uB2C8\uB2E4."
   artifactSprite: {fileID: 0}
+  artifactPrice: 30

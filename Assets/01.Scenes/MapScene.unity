@@ -872,8 +872,17 @@ MonoBehaviour:
   wheelNumber: 3
   playerOwnArtifacts: []
   entireArtifacts:
+  - {fileID: 793153908756376055, guid: 6369692d8b08a0948ae8c2ac00c547bc, type: 3}
+  - {fileID: 5487508860246756875, guid: 8e94cd26000d1984194eac3e4afd1d9d, type: 3}
+  - {fileID: 5100133100831898635, guid: 5cb81a6d1b9699d46b595cbdcca9a700, type: 3}
+  - {fileID: 3653246295860660122, guid: b668582a483efb146aa2d0b10fdfcdae, type: 3}
+  - {fileID: 1289242584067563329, guid: ff384092f85961e4faa898c2c38f50c7, type: 3}
+  - {fileID: 6927245119974781274, guid: 85df4564b393cdb41ba45d4be600c282, type: 3}
+  - {fileID: 4132968376208165943, guid: 27642d46d8503354d9d5aaffc292ed74, type: 3}
   - {fileID: 649703244324064050, guid: 5dece9cecaee6744ab16da1b9170c669, type: 3}
+  - {fileID: 6396861256322567636, guid: 76d14d048178ede44a0c9b8578319282, type: 3}
   rewardCount: 3
+  isElite: 0
   maxRoll: 1
   goldenSlot: 0
   muscle: 0

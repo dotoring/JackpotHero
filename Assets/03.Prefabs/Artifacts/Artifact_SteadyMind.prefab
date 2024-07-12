@@ -49,4 +49,5 @@ MonoBehaviour:
     \uBC1C\uB3D9\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4. \uB4F1\uC7A5\uD55C \uBAA8\uB4E0
     \uC2EC\uBCFC\uC758 \uAE30\uBCF8 \uD53C\uD574\uB7C9\uC758 \uD569\uB9CC\uD07C \uD53C\uD574\uB97C
     \uC90D\uB2C8\uB2E4."
-  artifactSprite: {fileID: 0}
+  artifactSprite: {fileID: 21300000, guid: ea65811d6a50ec14fb85534a79aaf592, type: 3}
+  artifactPrice: 30

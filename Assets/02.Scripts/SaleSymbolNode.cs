@@ -55,6 +55,8 @@ public class SaleSymbolNode : MonoBehaviour
             GameMgr.Instance.AddPlayerSymbol(symbol);
             GameMgr.Instance.useGold(symbol.symbolPrice);
 
+            GameObject.Find("UIMgr").GetComponent<UIMgr>().RefreshOwnSymbols();
+
             Destroy(gameObject);
         }
         else

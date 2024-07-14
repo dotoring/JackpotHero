@@ -8,7 +8,7 @@ public class SymbolScrollCtrl : MonoBehaviour
     public ScrollRect scrollRect;
     public RectTransform content;
 
-    private List<RectTransform> items;
+    [SerializeField] private List<RectTransform> items;
     private float itemHeight;
 
     private SymbolNode cursymbol;
@@ -27,7 +27,7 @@ public class SymbolScrollCtrl : MonoBehaviour
             itemHeight = items[0].rect.height;
         }
 
-        // Ensure content height is correct
+        //콘텐츠 높이 확실히 하기
         content.sizeDelta = new Vector2(content.sizeDelta.x, items.Count * itemHeight);
 
         content.anchoredPosition = new Vector2(content.anchoredPosition.x, content.anchoredPosition.y + itemHeight);
@@ -35,6 +35,7 @@ public class SymbolScrollCtrl : MonoBehaviour
 
     void Update()
     {
+        //항상 가운데의 심볼이 현재의 심볼이도록 설정
         if(content.anchoredPosition.y == 0)
         {
             cursymbol = items[2].GetComponent<SymbolNode>();
@@ -48,7 +49,7 @@ public class SymbolScrollCtrl : MonoBehaviour
             cursymbol = items[4].GetComponent<SymbolNode>();
         }
 
-        // Handle user input for scrolling
+        //키보드 방향키를 이용한 스크롤
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             ScrollUp();
@@ -58,6 +59,7 @@ public class SymbolScrollCtrl : MonoBehaviour
             ScrollDown();
         }
 
+        //마우스 휠을 이용한 스크롤
         float wheelInput = Input.GetAxis("Mouse ScrollWheel");
         if (wheelInput > 0)
         {
@@ -68,7 +70,7 @@ public class SymbolScrollCtrl : MonoBehaviour
             ScrollDown();
         }
 
-        // Check for circular scrolling
+        //무한회전을 위한 심볼리스트의 순서 변경
         float contentPosition = content.anchoredPosition.y;
         if (contentPosition < 0)
         {
@@ -106,6 +108,7 @@ public class SymbolScrollCtrl : MonoBehaviour
         }
     }
 
+    //첫번째 심볼을 마지막 위치로 보내주는 함수
     private void MoveToEnd()
     {
         RectTransform firstItem = items[0];
@@ -117,6 +120,7 @@ public class SymbolScrollCtrl : MonoBehaviour
         content.anchoredPosition = new Vector2(content.anchoredPosition.x, content.anchoredPosition.y - itemHeight);
     }
 
+    //마지막 심볼을 첫번째 위치로 보내주는 함수
     private void MoveToStart()
     {
         RectTransform lastItem = items[items.Count - 1];
@@ -128,6 +132,7 @@ public class SymbolScrollCtrl : MonoBehaviour
         content.anchoredPosition = new Vector2(content.anchoredPosition.x, content.anchoredPosition.y + itemHeight);
     }
 
+    //심볼 리스트에 변동이 있으면 다시 만들기
     public void RefreshSymbolScroll()
     {
         items = new List<RectTransform>();

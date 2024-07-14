@@ -46,6 +46,10 @@ public class Place
         {
             placeType = PlaceType.Rest;
         }
+        else if(posX == 5)
+        {
+            placeType = PlaceType.Shop;
+        }
         else
         {
             //0.0 ~ 1.0 사이의 난수 생성

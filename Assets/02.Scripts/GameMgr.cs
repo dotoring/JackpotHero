@@ -228,4 +228,9 @@ public class GameMgr : MonoBehaviour
     {
         return entireArtifacts;
     }
+
+    public int GetWheelNumber()
+    {
+        return wheelNumber;
+    }
 }

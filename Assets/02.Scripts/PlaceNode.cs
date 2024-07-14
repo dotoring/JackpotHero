@@ -51,7 +51,7 @@ public class PlaceNode : MonoBehaviour
                 SceneManager.LoadScene("ShopScene");
                 break;
             case PlaceType.Treasure:
-                SceneManager.LoadScene("TreasureTempScene");
+                SceneManager.LoadScene("TreasureScene");
                 break;
         }
     }

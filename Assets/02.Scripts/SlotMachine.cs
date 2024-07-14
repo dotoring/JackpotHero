@@ -9,9 +9,14 @@ public class SlotMachine : MonoBehaviour
     public BattleMgr battleMgr;
 
     public List<Symbol> symbols;
-    public List<Symbol> randomSymbols = new List<Symbol>();
+    //랜덤으로 뽑은 심볼들 저장 리스트
+    List<Symbol> randomSymbols = new List<Symbol>();
     //나온 심볼종류와 갯수를 세는 딕셔너리
     Dictionary<Symbol, int> symbolCounts = new Dictionary<Symbol, int>();
+
+    public GameObject wheelNodePref;
+    public Transform wheelLayout;
+
     public List<Image> wheels;
 
     public Button attackBtn;
@@ -19,6 +24,14 @@ public class SlotMachine : MonoBehaviour
     void Start()
     {
         gameMgr = GameObject.Find("GameMgr").GetComponent<GameMgr>();
+
+        //휠 갯수에 따른 휠 생성
+        for(int i = 0; i < gameMgr.GetWheelNumber(); i++)
+        {
+            GameObject wheel = Instantiate(wheelNodePref);
+            wheel.transform.SetParent(wheelLayout, false);
+            wheels.Add(wheel.GetComponent<WheelNode>().symbolImg);
+        }
 
         //보유 심볼들 가져오기
         symbols = gameMgr.GetPlayerOwnSymbols();

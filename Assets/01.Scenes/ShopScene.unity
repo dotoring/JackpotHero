@@ -908,7 +908,7 @@ MonoBehaviour:
   discardPriceText: {fileID: 1777299095}
   discardPrice: 25
   artifactSaleNodePref: {fileID: 1269872511738088323, guid: 06f382f07f313514a99829d8fe92c923, type: 3}
-  artifactSaleLayout: {fileID: 583924325}
+  artifactSaleLayout: {fileID: 1034449051}
   playerHp: {fileID: 1242010029}
   playerBarrier: {fileID: 809605138}
   playerBarrierUI: {fileID: 1378286171}

@@ -38,7 +38,7 @@ public class UIMgr : MonoBehaviour
         gameMgr = GameMgr.Instance;
 
         RefreshOwnArtifacts();
-        GenerateOwnSymbols();
+        RefreshOwnSymbols();
 
         if (symbolsInventoryBtn != null)
         {
@@ -62,9 +62,22 @@ public class UIMgr : MonoBehaviour
         CountSymbol();
     }
 
-    //보유 심볼 생성 함수
-    void GenerateOwnSymbols()
+    public void RefreshOwnSymbols()
     {
+        StartCoroutine(GenerateOwnSymbols());
+    }
+
+    //보유 심볼 생성 함수
+    public IEnumerator GenerateOwnSymbols()
+    {
+        foreach(Transform child in ownSymbolLayout)
+        {
+            Destroy(child.gameObject);
+        }
+
+        yield return new WaitForEndOfFrame();
+
+        //무한히 회전하는 연출을 위해 보유 심볼 갯수에 따른 추가 생성
         List<Symbol> Symbols = new List<Symbol>(gameMgr.GetPlayerOwnSymbols());
         if (Symbols.Count < 4)
         {
@@ -90,7 +103,10 @@ public class UIMgr : MonoBehaviour
             symbolNode.transform.SetParent(ownSymbolLayout, false);
             symbolNode.GetComponent<SymbolNode>().symbol = symbol;
         }
+
         symbolScrollCtrl.RefreshSymbolScroll();
+
+        yield return null;
     }
 
     //보유 심볼 확인 버튼

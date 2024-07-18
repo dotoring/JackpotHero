@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed218ee3675b4d34fa82f7677f3b7cff, type: 3}
+  m_Name: TradeWithKid
+  m_EditorClassIdentifier: 
+  description: "\uD55C \uAF2C\uB9C8\uC544\uC774\uAC00 \uCC3E\uC544\uC640 \uB9D0\uC744
+    \uAC78\uC5C8\uB2E4.\n<color=#FBFF3E>\"\uC800\uB791 \uAC70\uB798\uD558\uC2E4\uB798\uC694?\"</color>"
+  choices:
+  - choiceText: "\uC2B9\uB77D\uD55C\uB2E4."
+    action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1977153324034180166, guid: d6fedcb37c70f6b4aaa1f04aadd18ba7, type: 3}
+          m_TargetAssemblyTypeName: EventCtrl, Assembly-CSharp
+          m_MethodName: UseGoldAndAddArtifact
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 60
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - choiceText: "\uBB3C\uAC74\uC744 \uBE7C\uC557\uB294\uB2E4."
+    action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1977153324034180166, guid: d6fedcb37c70f6b4aaa1f04aadd18ba7, type: 3}
+          m_TargetAssemblyTypeName: EventCtrl, Assembly-CSharp
+          m_MethodName: AddRandomArtifact
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 1977153324034180166, guid: d6fedcb37c70f6b4aaa1f04aadd18ba7, type: 3}
+          m_TargetAssemblyTypeName: EventCtrl, Assembly-CSharp
+          m_MethodName: AddSymbol
+          m_Mode: 2
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: Symbol, Assembly-CSharp
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - choiceText: "\uAC70\uC808\uD55C\uB2E4."
+    action:
+      m_PersistentCalls:
+        m_Calls: []
+  resultTexts: []

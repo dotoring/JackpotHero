@@ -21,6 +21,6 @@ EditorBuildSettings:
     path: Assets/01.Scenes/EventTempScene.unity
     guid: 781a9c36b09d38240839b28dfef74c61
   - enabled: 1
-    path: Assets/01.Scenes/TreasureTempScene.unity
+    path: Assets/01.Scenes/TreasureScene.unity
     guid: 187007aa83c58594898140e22db838d4
   m_configObjects: {}

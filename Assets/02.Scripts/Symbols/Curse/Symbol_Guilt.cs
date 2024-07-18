@@ -2,17 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Symbol_Seven : Symbol
+public class Symbol_Guilt : Symbol
 {
+    [SerializeField] Condition condition;
     public override void DuplicationEffect(int n, GameObject monster)
     {
-        AttackEnemy(monster, basicDmg + 5);
-        GameMgr.Instance.EarnGold(50);
+        GameObject.Find("BattleMgr").GetComponent<BattleMgr>().AddPlayerCondition(condition, 1);
     }
 
     public override void PerfectEffect(GameObject monster)
     {
-        AttackEnemy(monster, basicDmg + 10);
-        GameMgr.Instance.EarnGold(500);
+        GameMgr.Instance.RemovePlayerSymbol(this);
     }
 }

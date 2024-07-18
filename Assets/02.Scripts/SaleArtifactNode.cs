@@ -43,7 +43,7 @@ public class SaleArtifactNode : ArtifactNode
         if (GameMgr.Instance.GetGoldAmount() >= artifact.GetArtifactPrice())
         {
             GameMgr.Instance.AddArtifact(artifact);
-            GameMgr.Instance.useGold(artifact.GetArtifactPrice());
+            GameMgr.Instance.UseGold(artifact.GetArtifactPrice());
 
             Destroy(gameObject);
         }

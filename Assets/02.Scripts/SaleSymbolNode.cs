@@ -53,7 +53,7 @@ public class SaleSymbolNode : MonoBehaviour
         if(GameMgr.Instance.GetGoldAmount() >= symbol.symbolPrice)
         {
             GameMgr.Instance.AddPlayerSymbol(symbol);
-            GameMgr.Instance.useGold(symbol.symbolPrice);
+            GameMgr.Instance.UseGold(symbol.symbolPrice);
 
             GameObject.Find("UIMgr").GetComponent<UIMgr>().RefreshOwnSymbols();
 

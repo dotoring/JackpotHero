@@ -48,4 +48,4 @@ MonoBehaviour:
   artifactDescription: "\uB8F0\uB81B\uC744 \uB3CC\uB9B4 \uC218 \uC788\uB294 \uD69F\uC218\uB97C
     1\uB298\uB824\uC90D\uB2C8\uB2E4."
   artifactSprite: {fileID: 21300000, guid: 7904b5a6955bc6546bfdc4efaff2c8dc, type: 3}
-  artifactPrice: 30
+  artifactPrice: 50

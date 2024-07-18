@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Symbol_Seven : Symbol
+public class Symbol_Greed : Symbol
 {
     public override void DuplicationEffect(int n, GameObject monster)
     {
-        AttackEnemy(monster, basicDmg + 5);
-        GameMgr.Instance.EarnGold(50);
+        GameMgr.Instance.UseGold(10);
     }
 
     public override void PerfectEffect(GameObject monster)
     {
-        AttackEnemy(monster, basicDmg + 10);
-        GameMgr.Instance.EarnGold(500);
+        GameMgr.Instance.RemovePlayerSymbol(this);
     }
 }

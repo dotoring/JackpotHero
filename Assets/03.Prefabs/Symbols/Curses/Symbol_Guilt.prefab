@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4260575815508360454
+--- !u!1 &8780025818023169954
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2344931051410631334}
-  - component: {fileID: 4132968376208165943}
+  - component: {fileID: 8902129272166648568}
+  - component: {fileID: 7685487149577977279}
   m_Layer: 0
-  m_Name: Artifact_SteadyMind
+  m_Name: Symbol_Guilt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2344931051410631334
+--- !u!4 &8902129272166648568
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4260575815508360454}
+  m_GameObject: {fileID: 8780025818023169954}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -32,22 +32,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4132968376208165943
+--- !u!114 &7685487149577977279
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4260575815508360454}
+  m_GameObject: {fileID: 8780025818023169954}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5d59d101bfccd841b19010f2300b62b, type: 3}
+  m_Script: {fileID: 11500000, guid: 1cb7b4346e37e5143bf331945cd9e491, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  artifactName: "\uAC74\uC2E4\uD55C \uC815\uC2E0"
-  artifactDescription: "\uB354\uC774\uC0C1 \uC2EC\uBCFC\uC758 \uCD94\uAC00\uD6A8\uACFC\uAC00
-    \uBC1C\uB3D9\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4. \uB4F1\uC7A5\uD55C \uBAA8\uB4E0
-    \uC2EC\uBCFC\uC758 \uAE30\uBCF8 \uD53C\uD574\uB7C9\uC758 \uD569\uB9CC\uD07C \uD53C\uD574\uB97C
-    \uC90D\uB2C8\uB2E4."
-  artifactSprite: {fileID: 21300000, guid: ea65811d6a50ec14fb85534a79aaf592, type: 3}
-  artifactPrice: 50
+  symbolName: "\uC8C4\uCC45\uAC10"
+  symbolBasicDescription: 
+  symbolPairDescription: "\uC57D\uD654 1\uC744 \uBC1B\uC2B5\uB2C8\uB2E4."
+  symbolPerfectDescription: "\uC774 \uC2EC\uBCFC\uC744 \uC81C\uAC70\uD569\uB2C8\uB2E4."
+  basicDmg: 0
+  sprite: {fileID: 0}
+  symbolPrice: 0
+  condition: {fileID: 5075585812383713487, guid: 645c576dee67cfe4fa56432210033361, type: 3}

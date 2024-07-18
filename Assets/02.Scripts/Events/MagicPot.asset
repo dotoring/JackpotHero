@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed218ee3675b4d34fa82f7677f3b7cff, type: 3}
+  m_Name: MagicPot
+  m_EditorClassIdentifier: 
+  description: "\uC218\uC0C1\uD558\uAC8C \uC0DD\uAE34 \uD56D\uC544\uB9AC\uB97C \uBC1C\uACAC\uD588\uB2E4."
+  choices:
+  - choiceText: "\uC2EC\uBCFC\uC744 \uD558\uB098 \uB123\uC5B4\uBCF8\uB2E4."
+    action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1977153324034180166, guid: d6fedcb37c70f6b4aaa1f04aadd18ba7, type: 3}
+          m_TargetAssemblyTypeName: EventCtrl, Assembly-CSharp
+          m_MethodName: CopySymbol
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - choiceText: "\uADF8\uB0E5 \uC9C0\uB098\uAC04\uB2E4."
+    action:
+      m_PersistentCalls:
+        m_Calls: []
+  resultTexts:
+  - "\uAEBC\uB0B4\uBCF4\uB2C8 2\uAC1C\uAC00 \uB418\uC5C8\uB2E4!"
+  - "\uC218\uC0C1\uD558\uB2C8 \uBB34\uC2DC\uD558\uAE30\uB85C \uD588\uB2E4."

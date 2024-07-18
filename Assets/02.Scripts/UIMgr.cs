@@ -110,7 +110,7 @@ public class UIMgr : MonoBehaviour
     }
 
     //보유 심볼 확인 버튼
-    void ShowSymbols()
+    public void ShowSymbols()
     {
         if (ownSymbolsPanel.activeSelf)
         {

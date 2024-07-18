@@ -16,6 +16,7 @@ public class GameMgr : MonoBehaviour
     [SerializeField] int wheelNumber;
     [SerializeField] List<Artifact> playerOwnArtifacts;
     [SerializeField] List<Artifact> entireArtifacts;
+    List<Artifact> availableArtifacts; //중복 방지를 위해
     //List<Item> items;
 
     public int rewardCount;
@@ -51,6 +52,7 @@ public class GameMgr : MonoBehaviour
     {
         playerCurHP = playerMaxHP;
         SetStartValue();
+        availableArtifacts = entireArtifacts;
     }
 
     void SetStartValue()
@@ -118,6 +120,20 @@ public class GameMgr : MonoBehaviour
         }
     }
 
+    public void HealPlayerByRate(float val)
+    {
+        int healVal = (int)(playerMaxHP * val);
+
+        if (playerCurHP + healVal > playerMaxHP)
+        {
+            playerCurHP = playerMaxHP;
+        }
+        else
+        {
+            playerCurHP += healVal;
+        }
+    }
+
     public void ResetBarrier()
     {
         playerBarrier = 0;
@@ -146,12 +162,12 @@ public class GameMgr : MonoBehaviour
     }
 
     //플레이어 골드 추가 함수
-    public void earnGold(int val)
+    public void EarnGold(int val)
     {
         playerGold += val;
     }
 
-    public void useGold(int val)
+    public void UseGold(int val)
     {
         playerGold -= val;
     }
@@ -167,12 +183,15 @@ public class GameMgr : MonoBehaviour
     {
         Symbol s = null;
 
+        //보유중인 심볼이 아닐경우
         if (!playerOwnSymbols.Contains(symbol))
         {
+            //새로 샐성
             s = Instantiate(symbol, transform);
         }
-        else
+        else //보유중인 심볼일 경우
         {
+            //생성되어있는 심볼 찾기
             foreach(Symbol sym in playerOwnSymbols)
             {
                 if(symbol == sym)
@@ -183,6 +202,7 @@ public class GameMgr : MonoBehaviour
             }
         }
         
+        //심볼 추가
         if(s != null)
         {
             playerOwnSymbols.Add(s);
@@ -220,13 +240,28 @@ public class GameMgr : MonoBehaviour
     //보유 유물 추가 함수
     public void AddArtifact(Artifact artifact)
     {
+        //보유 유물리스트에 추가
         playerOwnArtifacts.Add(artifact);
+        //등장 가능 유물 리스트에서 제거
+        availableArtifacts.Remove(artifact);
         artifact.InvokeArtifact();
     }
 
-    public List<Artifact> GetEntireArtifacts()
+    public List<Artifact> GetAvailableArtifacts()
     {
-        return entireArtifacts;
+        return availableArtifacts;
+    }
+
+    public void AddWheel()
+    {
+        Debug.Log("TEST1");
+        wheelNumber++;
+    }
+
+    public void RemoveWheel()
+    {
+        Debug.Log("TEST2");
+        wheelNumber--;
     }
 
     public int GetWheelNumber()

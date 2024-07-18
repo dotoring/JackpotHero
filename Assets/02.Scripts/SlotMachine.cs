@@ -137,7 +137,7 @@ public class SlotMachine : MonoBehaviour
                         //<<<황금슬롯 아티팩트 효과
                         if (gameMgr.goldenSlot)
                         {
-                            gameMgr.earnGold(20);
+                            gameMgr.EarnGold(20);
                         }
                         //황금슬롯 아티팩트 효과>>>
                         //<<<행운방패 아티팩트 효과
@@ -159,7 +159,7 @@ public class SlotMachine : MonoBehaviour
                         //<<<황금슬롯 아티팩트 효과
                         if (gameMgr.goldenSlot)
                         {
-                            gameMgr.earnGold(5);
+                            gameMgr.EarnGold(5);
                         }
                         //황금슬롯 아티팩트 효과>>>
                         //<<<행운방패 아티팩트 효과

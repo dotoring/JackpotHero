@@ -97,7 +97,7 @@ public class BattleMgr : MonoBehaviour
         {
             goldEarnBtn.onClick.AddListener(() =>
             {
-                gameMgr.earnGold(rewardGold);
+                gameMgr.EarnGold(rewardGold);
                 goldEarnBtn.interactable = false;
             });
         }
@@ -401,7 +401,7 @@ public class BattleMgr : MonoBehaviour
 
         //유물 보상
         List<Artifact> artifactRewards = new List<Artifact>();
-        List<Artifact> entireArtifacts = new List<Artifact>(gameMgr.GetEntireArtifacts());
+        List<Artifact> entireArtifacts = new List<Artifact>(gameMgr.GetAvailableArtifacts());
         for (int i = 0; i < gameMgr.rewardCount + (gameMgr.gamblerSensor ? 1 : 0);) //등장할 수 있는 보상 수 만큼 반복
         {
             int ran = Random.Range(0, entireArtifacts.Count);

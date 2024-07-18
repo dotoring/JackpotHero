@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed218ee3675b4d34fa82f7677f3b7cff, type: 3}
+  m_Name: WheelEvent
+  m_EditorClassIdentifier: 
+  description: "\uD720\uB4E4\uC774 \uB193\uC5EC\uC788\uB294 \uB2E8\uC0C1\uC744 \uBC1C\uACAC\uD588\uB2E4."
+  choices:
+  - choiceText: "\uD558\uB098 \uAC00\uC838\uAC04\uB2E4"
+    action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1977153324034180166, guid: d6fedcb37c70f6b4aaa1f04aadd18ba7, type: 3}
+          m_TargetAssemblyTypeName: EventCtrl, Assembly-CSharp
+          m_MethodName: AddWheel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - choiceText: "\uB0B4\uAC83\uB3C4 \uD558\uB098 \uC62C\uB824\uB454\uB2E4."
+    action:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1977153324034180166, guid: d6fedcb37c70f6b4aaa1f04aadd18ba7, type: 3}
+          m_TargetAssemblyTypeName: EventCtrl, Assembly-CSharp
+          m_MethodName: RemoveWheel
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - choiceText: "\uADF8\uB0E5 \uC9C0\uB098\uAC04\uB2E4."
+    action:
+      m_PersistentCalls:
+        m_Calls: []
+  resultTexts:
+  - "\uC77C\uB2E8 \uAC00\uC838\uC624\uAE34\uD588\uB294\uB370 \uC88B\uC740\uAC74\uAC00?
+    \uB77C\uB294 \uC0DD\uAC01\uC744 \uD588\uB2E4."
+  - "\uD55C\uACB0 \uAC00\uBCBC\uC6CC\uC9C4\uB4EF \uD558\uB2E4."
+  - "\uD604\uC7AC\uC5D0 \uB9CC\uC871\uD558\uAE30\uB85C \uD588\uB2E4."

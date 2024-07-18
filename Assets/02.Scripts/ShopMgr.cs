@@ -122,7 +122,7 @@ public class ShopMgr : MonoBehaviour
     {
         //판매 유물 뽑기
         List<Artifact> sales = new List<Artifact>();
-        List<Artifact> entireArtifacts = new List<Artifact>(gameMgr.GetEntireArtifacts());
+        List<Artifact> entireArtifacts = new List<Artifact>(gameMgr.GetAvailableArtifacts());
         for (int i = 0; i < 4;) //상점은 4개 제공
         {
             int ran = Random.Range(0, entireArtifacts.Count);
@@ -159,7 +159,7 @@ public class ShopMgr : MonoBehaviour
     IEnumerator DiscardSymbol()
     {
         //돈 차감 후 심볼 제거
-        gameMgr.useGold(discardPrice);
+        gameMgr.UseGold(discardPrice);
         Symbol symbol = symbolScrollCtrl.GetCurSymbol();
         gameMgr.RemovePlayerSymbol(symbol);
 

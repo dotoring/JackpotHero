@@ -38,7 +38,7 @@ public class Place
         {
             placeType = PlaceType.Battle;
         }
-        else if (posX == 3)
+        else if (posX == 7)
         {
             placeType = PlaceType.Treasure;
         }
@@ -46,9 +46,9 @@ public class Place
         {
             placeType = PlaceType.Rest;
         }
-        else if(posX == 5)
+        else if(posX == 2)
         {
-            placeType = PlaceType.Shop;
+            placeType = PlaceType.Event;
         }
         else
         {

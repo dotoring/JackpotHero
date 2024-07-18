@@ -2163,6 +2163,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollRect: {fileID: 1029886672}
   content: {fileID: 1912593106}
+  items: []
   count: 1
 --- !u!114 &1029886672
 MonoBehaviour:
@@ -3561,6 +3562,9 @@ MonoBehaviour:
   artifactNodePref: {fileID: 4572805585080363841, guid: f0730130b8bdda3439363a9cf66bb166, type: 3}
   ownArtifactGridLayout: {fileID: 99107651}
   artifactTooltipGO: {fileID: 381868346}
+  playerHp: {fileID: 2006483600}
+  playerBarrier: {fileID: 1955990947}
+  playerBarrierUI: {fileID: 1000543591}
 --- !u!4 &1617306370
 Transform:
   m_ObjectHideFlags: 0
@@ -4940,9 +4944,6 @@ MonoBehaviour:
   recoverBtn: {fileID: 1142768693}
   discardSelectBtn: {fileID: 1001426713}
   discardSymbolBtn: {fileID: 2041924367}
-  playerHp: {fileID: 2006483600}
-  playerBarrier: {fileID: 1955990947}
-  playerBarrierUI: {fileID: 1000543591}
 --- !u!4 &2108250860
 Transform:
   m_ObjectHideFlags: 0

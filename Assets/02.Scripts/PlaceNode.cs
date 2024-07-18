@@ -38,7 +38,21 @@ public class PlaceNode : MonoBehaviour
                 SceneManager.LoadScene("BattleScene");
                 break;
             case PlaceType.Event:
-                SceneManager.LoadScene("EventTempScene");
+                switch(GetRandomResult())
+                {
+                    case 0:
+                        SceneManager.LoadScene("EventScene");
+                        break;
+                    case 1:
+                        SceneManager.LoadScene("BattleScene");
+                        break;
+                    case 2:
+                        SceneManager.LoadScene("ShopScene");
+                        break;
+                    case 3:
+                        SceneManager.LoadScene("TreasureScene");
+                        break;
+                }
                 break;
             case PlaceType.Elite:
                 GameMgr.Instance.isElite = true;
@@ -79,5 +93,35 @@ public class PlaceNode : MonoBehaviour
                 img.sprite = sprites[5];
                 break;
         }
+    }
+
+    public int GetRandomResult()
+    {
+        //가중치 설정
+        int Event = 5;
+        int Enemy = 1;
+        int Shop = 1;
+        int Treasure = 1;
+        int[] weights = { Event, Enemy, Shop, Treasure};  // 각각의 결과에 대한 가중치
+
+        int totalWeight = 0;
+        foreach (int weight in weights)
+        {
+            totalWeight += weight;
+        }
+
+        int randomValue = Random.Range(0, totalWeight);
+        int cumulativeWeight = 0;
+
+        for (int i = 0; i < weights.Length; i++)
+        {
+            cumulativeWeight += weights[i];
+            if (randomValue < cumulativeWeight)
+            {
+                return i;
+            }
+        }
+
+        return 0;
     }
 }

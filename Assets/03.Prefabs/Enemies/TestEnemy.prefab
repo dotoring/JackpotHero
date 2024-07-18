@@ -699,7 +699,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyName: dummy
-  enemyMaxHp: 15
+  enemyMaxHp: 20
   enemyBasePower: 3
   enemyAdditionPower: 0
   targetedImg: {fileID: 1785988366791479167}

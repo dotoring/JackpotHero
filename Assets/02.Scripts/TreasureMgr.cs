@@ -14,11 +14,6 @@ public class TreasureMgr : MonoBehaviour
     public GameObject rewardArtifactNodePref;
     public Transform rewardArtifactLayout;
 
-    [Header("UI")]
-    public TextMeshProUGUI playerHp;
-    public TextMeshProUGUI playerBarrier;
-    public GameObject playerBarrierUI;
-
     void Start()
     {
         gameMgr = GameMgr.Instance;
@@ -31,20 +26,6 @@ public class TreasureMgr : MonoBehaviour
             {
                 rewardArtifactsPanel.SetActive(true);
             });
-        }
-    }
-
-    void Update()
-    {
-        playerHp.text = gameMgr.GetPlayerCurHP().ToString();
-        playerBarrier.text = gameMgr.GetBarrier().ToString();
-        if (gameMgr.GetBarrier() > 0)
-        {
-            playerBarrierUI.SetActive(true);
-        }
-        else
-        {
-            playerBarrierUI.SetActive(false);
         }
     }
 

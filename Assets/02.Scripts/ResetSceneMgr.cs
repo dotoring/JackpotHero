@@ -16,12 +16,6 @@ public class ResetSceneMgr : MonoBehaviour
     public Button discardSelectBtn;
     public Button discardSymbolBtn;
 
-    [Header("UI")]
-    public TextMeshProUGUI playerHp;
-    public TextMeshProUGUI playerBarrier;
-    public GameObject playerBarrierUI;
-
-
     void Start()
     {
         gameMgr = GameMgr.Instance;
@@ -55,17 +49,6 @@ public class ResetSceneMgr : MonoBehaviour
 
     void Update()
     {
-        playerHp.text = gameMgr.GetPlayerCurHP().ToString();
-        playerBarrier.text = gameMgr.GetBarrier().ToString();
-        if (gameMgr.GetBarrier() > 0)
-        {
-            playerBarrierUI.SetActive(true);
-        }
-        else
-        {
-            playerBarrierUI.SetActive(false);
-        }
-
         if(!ownSymbolsPanel.activeSelf)
         {
             discardSymbolBtn.gameObject.SetActive(false);

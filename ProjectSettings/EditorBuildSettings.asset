@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/01.Scenes/ShopScene.unity
     guid: 1361675402a1d68498106aaa0bba5c77
   - enabled: 1
-    path: Assets/01.Scenes/EventTempScene.unity
+    path: Assets/01.Scenes/EventScene.unity
     guid: 781a9c36b09d38240839b28dfef74c61
   - enabled: 1
     path: Assets/01.Scenes/TreasureScene.unity

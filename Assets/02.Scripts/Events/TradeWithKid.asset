@@ -15,7 +15,8 @@ MonoBehaviour:
   description: "\uD55C \uAF2C\uB9C8\uC544\uC774\uAC00 \uCC3E\uC544\uC640 \uB9D0\uC744
     \uAC78\uC5C8\uB2E4.\n<color=#FBFF3E>\"\uC800\uB791 \uAC70\uB798\uD558\uC2E4\uB798\uC694?\"</color>"
   choices:
-  - choiceText: "\uC2B9\uB77D\uD55C\uB2E4."
+  - choiceText: "\uC2B9\uB77D\uD55C\uB2E4. <color=#CC3D3D>(60\uACE8\uB4DC)</color><color=#86E57F>(\uC720\uBB3C
+      \uD68D\uB4DD)</color>"
     action:
       m_PersistentCalls:
         m_Calls:
@@ -31,7 +32,8 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - choiceText: "\uBB3C\uAC74\uC744 \uBE7C\uC557\uB294\uB2E4."
+  - choiceText: "\uBB3C\uAC74\uC744 \uBE7C\uC557\uB294\uB2E4. <color=#86E57F>(\uC720\uBB3C
+      \uD68D\uB4DD)</color><color=#CC3D3D>(\uC800\uC8FC \uD68D\uB4DD)</color>"
     action:
       m_PersistentCalls:
         m_Calls:
@@ -52,7 +54,7 @@ MonoBehaviour:
           m_MethodName: AddSymbol
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgument: {fileID: 7685487149577977279, guid: 3d93a80dde79b7247a29f7c611ace518, type: 3}
             m_ObjectArgumentAssemblyTypeName: Symbol, Assembly-CSharp
             m_IntArgument: 0
             m_FloatArgument: 0
@@ -63,4 +65,9 @@ MonoBehaviour:
     action:
       m_PersistentCalls:
         m_Calls: []
-  resultTexts: []
+  resultTexts:
+  - "<color=#FBFF3E>\"\uAC10\uC0AC\uD574\uC694!\"</color>\n\uC544\uC774\uB294 \uC2E0\uB098\uC11C
+    \uB5A0\uB098\uAC14\uB2E4."
+  - "\uB2F9\uC2E0\uC740 \uD798\uC5C6\uB294 \uC5B4\uB9B0\uC544\uC774\uC758 \uBB3C\uAC74\uC744
+    \uAC15\uC81C\uB85C \uBE7C\uC557\uC558\uB2E4.\n\uC6B0\uC6B0 \uC4F0\uB808\uAE30"
+  - "\uAF2C\uB9C8\uC8FC\uC81C\uC5D0 \uBE44\uC2F8\uAC8C \uBC1B\uB294\uB2E4\uACE0 \uC0DD\uAC01\uD588\uB2E4."

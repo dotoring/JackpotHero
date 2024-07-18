@@ -46,10 +46,6 @@ public class Place
         {
             placeType = PlaceType.Rest;
         }
-        else if(posX == 2)
-        {
-            placeType = PlaceType.Event;
-        }
         else
         {
             //0.0 ~ 1.0 사이의 난수 생성

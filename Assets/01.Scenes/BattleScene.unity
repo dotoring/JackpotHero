@@ -3463,6 +3463,9 @@ MonoBehaviour:
   artifactNodePref: {fileID: 4572805585080363841, guid: f0730130b8bdda3439363a9cf66bb166, type: 3}
   ownArtifactGridLayout: {fileID: 924594745}
   artifactTooltipGO: {fileID: 173645076}
+  playerHp: {fileID: 754096963}
+  playerBarrier: {fileID: 1228764291}
+  playerBarrierUI: {fileID: 868725311}
 --- !u!4 &1209453332
 Transform:
   m_ObjectHideFlags: 0
@@ -3533,6 +3536,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollRect: {fileID: 1224098552}
   content: {fileID: 1032505740}
+  items: []
   count: 1
 --- !u!114 &1224098552
 MonoBehaviour:
@@ -4247,9 +4251,6 @@ MonoBehaviour:
   rewardArtifactLayout: {fileID: 270073427}
   rewardArtifactNodePref: {fileID: 6189814862660068742, guid: 4ac0bccefc30c0546b388d38a0355f2d, type: 3}
   nextStageBtn: {fileID: 2046265287}
-  playerHp: {fileID: 754096963}
-  playerBarrier: {fileID: 1228764291}
-  playerBarrierUI: {fileID: 868725311}
   powerUp: {fileID: 8578172782548542699, guid: 09a22af98a2094b4cb92254c1b2f4f95, type: 3}
 --- !u!4 &1307042475
 Transform:

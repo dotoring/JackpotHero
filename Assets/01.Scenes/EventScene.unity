@@ -2241,6 +2241,9 @@ MonoBehaviour:
   artifactNodePref: {fileID: 4572805585080363841, guid: f0730130b8bdda3439363a9cf66bb166, type: 3}
   ownArtifactGridLayout: {fileID: 577595383}
   artifactTooltipGO: {fileID: 5526628}
+  playerHp: {fileID: 18345464}
+  playerBarrier: {fileID: 1018903733}
+  playerBarrierUI: {fileID: 681757364}
 --- !u!4 &756778565
 Transform:
   m_ObjectHideFlags: 0
@@ -3616,7 +3619,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   events:
+  - {fileID: 11400000, guid: 73c1fd1693ff97a488ad626e9fdc96dd, type: 2}
+  - {fileID: 11400000, guid: b0bcc12656fb9364ba8d34d4a0fde1d2, type: 2}
+  - {fileID: 11400000, guid: 0f58b67916bf8c449a4d7b1eb972121e, type: 2}
   - {fileID: 11400000, guid: a530870a2cacc0b429f23afca64410a7, type: 2}
+  - {fileID: 11400000, guid: 8e38f2d6d2b5afa46a012f06837a3eaf, type: 2}
+  - {fileID: 11400000, guid: ec4e4ba81236e054eba74dca372b4d67, type: 2}
+  - {fileID: 11400000, guid: 23f5f0a011865654ebc20b8c96d705ff, type: 2}
+  - {fileID: 11400000, guid: ca59cf6135029de428163b50d71237aa, type: 2}
   eventMainText: {fileID: 1831215883}
   choiceBtn:
   - {fileID: 1198424275}

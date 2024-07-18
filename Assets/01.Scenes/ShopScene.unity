@@ -909,9 +909,6 @@ MonoBehaviour:
   discardPrice: 25
   artifactSaleNodePref: {fileID: 1269872511738088323, guid: 06f382f07f313514a99829d8fe92c923, type: 3}
   artifactSaleLayout: {fileID: 1034449051}
-  playerHp: {fileID: 1242010029}
-  playerBarrier: {fileID: 809605138}
-  playerBarrierUI: {fileID: 1378286171}
 --- !u!4 &246457652
 Transform:
   m_ObjectHideFlags: 0
@@ -1117,6 +1114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollRect: {fileID: 313063042}
   content: {fileID: 1539236535}
+  items: []
   count: 1
 --- !u!114 &313063042
 MonoBehaviour:
@@ -4004,6 +4002,9 @@ MonoBehaviour:
   artifactNodePref: {fileID: 4572805585080363841, guid: f0730130b8bdda3439363a9cf66bb166, type: 3}
   ownArtifactGridLayout: {fileID: 1577505875}
   artifactTooltipGO: {fileID: 821586737}
+  playerHp: {fileID: 1242010029}
+  playerBarrier: {fileID: 809605138}
+  playerBarrierUI: {fileID: 1378286171}
 --- !u!4 &1696897953
 Transform:
   m_ObjectHideFlags: 0

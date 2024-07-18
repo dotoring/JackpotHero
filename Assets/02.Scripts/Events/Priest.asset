@@ -15,7 +15,7 @@ MonoBehaviour:
   description: "\uC131\uC9C1\uC790\uB97C \uB9CC\uB0AC\uC2B5\uB2C8\uB2E4.\n<color=#FBFF3E>\"\uD544\uC694\uD558\uC2E0\uAC8C
     \uC788\uB098\uC694?\"</color>"
   choices:
-  - choiceText: "\uCE58\uC720\uB97C \uBC1B\uB294\uB2E4.(50%\uD68C\uBCF5) (50\uACE8\uB4DC)"
+  - choiceText: "\uCE58\uC720\uB97C \uBC1B\uB294\uB2E4.<color=#CC3D3D>(50\uACE8\uB4DC)</color><color=#86E57F>(50%\uD68C\uBCF5)</color>"
     action:
       m_PersistentCalls:
         m_Calls:
@@ -32,7 +32,7 @@ MonoBehaviour:
             m_BoolArgument: 0
           m_CallState: 2
   - choiceText: "\uC2EC\uBCFC\uC744 \uD558\uB098 \uC81C\uAC70\uBC1B\uB294\uB2E4.
-      (50\uACE8\uB4DC)"
+      <color=#CC3D3D>(50\uACE8\uB4DC)</color><color=#86E57F>(\uC2EC\uBCFC \uC81C\uAC70)</color>"
     action:
       m_PersistentCalls:
         m_Calls:

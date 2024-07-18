@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3770052547710002153
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5438131467421519264}
+  - component: {fileID: 7941238822066701414}
+  m_Layer: 0
+  m_Name: Symbol_Thorn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5438131467421519264
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3770052547710002153}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7941238822066701414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3770052547710002153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ea25cf9f347e22449602dbdd2452e90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  symbolName: "\uAC00\uC2DC"
+  symbolBasicDescription: 
+  symbolPairDescription: "\uCD9C\uD608 \uC2A4\uD0DD\uB9CC\uD07C \uD53C\uD574\uB97C
+    \uC900 \uB4A4, \uCD9C\uD608 3\uC744 \uC785\uD799\uB2C8\uB2E4."
+  symbolPerfectDescription: "\uCD9C\uD608 \uC2A4\uD0DD\uB9CC\uD07C \uD53C\uD574\uB97C
+    \uC900 \uB4A4, \uCD9C\uD608\uC744 2\uBC30\uB85C \uB9CC\uB4ED\uB2C8\uB2E4."
+  basicDmg: 2
+  sprite: {fileID: 0}
+  symbolPrice: 200
+  condition: {fileID: 8238473088003967757, guid: 8bd1e6f2a030ac849b125ee4794b96d4, type: 3}

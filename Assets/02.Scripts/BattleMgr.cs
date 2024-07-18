@@ -51,11 +51,6 @@ public class BattleMgr : MonoBehaviour
 
     public Button nextStageBtn;
 
-    [Header ("UI")]
-    public TextMeshProUGUI playerHp;
-    public TextMeshProUGUI playerBarrier;
-    public GameObject playerBarrierUI;
-
     [Header("for Artifacts")]
     [SerializeField] Condition powerUp;
 
@@ -100,20 +95,6 @@ public class BattleMgr : MonoBehaviour
                 gameMgr.EarnGold(rewardGold);
                 goldEarnBtn.interactable = false;
             });
-        }
-    }
-
-    private void Update()
-    {
-        playerHp.text = gameMgr.GetPlayerCurHP().ToString();
-        playerBarrier.text = gameMgr.GetBarrier().ToString();
-        if(gameMgr.GetBarrier() > 0)
-        {
-            playerBarrierUI.SetActive(true);
-        }
-        else
-        {
-            playerBarrierUI.SetActive(false);
         }
     }
 

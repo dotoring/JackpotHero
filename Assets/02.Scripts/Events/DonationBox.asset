@@ -16,7 +16,8 @@ MonoBehaviour:
     \n<color=#FBFF3E>\"\uD544\uC694\uD558\uC2E0 \uB9CC\uD07C\uB9CC \uAC00\uC838\uAC00\uC138\uC694\"</color>
     \uB77C\uACE0 \uC4F0\uC5EC\uC788\uB2E4."
   choices:
-  - choiceText: "\uC801\uB2F9\uD788 \uAC00\uC838\uAC04\uB2E4(100\uACE8\uB4DC \uD68D\uB4DD)"
+  - choiceText: "\uC801\uB2F9\uD788 \uAC00\uC838\uAC04\uB2E4 <color=#86E57F>(80\uACE8\uB4DC
+      \uD68D\uB4DD)</color>"
     action:
       m_PersistentCalls:
         m_Calls:
@@ -27,12 +28,13 @@ MonoBehaviour:
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 100
+            m_IntArgument: 80
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - choiceText: "\uC695\uC2EC\uC744 \uBD80\uB9B0\uB2E4(250\uACE8\uB4DC \uD68D\uB4DD)"
+  - choiceText: "\uC695\uC2EC\uC744 \uBD80\uB9B0\uB2E4 <color=#86E57F>(250\uACE8\uB4DC
+      \uD68D\uB4DD)</color><color=#CC3D3D>(\uC800\uC8FC \uD68D\uB4DD)</color>"
     action:
       m_PersistentCalls:
         m_Calls:

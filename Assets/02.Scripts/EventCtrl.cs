@@ -51,6 +51,18 @@ public class EventCtrl : MonoBehaviour
         eventMgr.selectType = SelectType.Copy;
     }
 
+    public void ChangeAllSymbols()
+    {
+        int symbolNum = GameMgr.Instance.GetPlayerOwnSymbols().Count;
+
+        GameMgr.Instance.ResetPlayerSymbol();
+
+        for(int i = 0; i < symbolNum; i++)
+        {
+            AddRandomSymbol();
+        }
+    }
+
     public void AddArtifact(Artifact artifact)
     {
         GameMgr.Instance.AddArtifact(artifact);
@@ -61,6 +73,11 @@ public class EventCtrl : MonoBehaviour
         List<Artifact> entireArtifacts = new List<Artifact>(GameMgr.Instance.GetAvailableArtifacts());
         int ran = Random.Range(0, entireArtifacts.Count);
         GameMgr.Instance.AddArtifact(entireArtifacts[ran]);
+    }
+
+    public void UseGold(int v)
+    {
+        GameMgr.Instance.UseGold(v);
     }
 
     public void UseGoldAndHeal(int v)

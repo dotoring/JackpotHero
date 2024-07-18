@@ -32,6 +32,10 @@ public class UIMgr : MonoBehaviour
     public Transform ownArtifactGridLayout;
     public GameObject artifactTooltipGO;
 
+    [Header("PlayerUI")]
+    public TextMeshProUGUI playerHp;
+    public TextMeshProUGUI playerBarrier;
+    public GameObject playerBarrierUI;
 
     void Start()
     {
@@ -57,6 +61,17 @@ public class UIMgr : MonoBehaviour
         if(ownSymbolsPanel.activeSelf)
         {
             ShowSymbolInformation();
+        }
+
+        playerHp.text = gameMgr.GetPlayerCurHP().ToString();
+        playerBarrier.text = gameMgr.GetBarrier().ToString();
+        if (gameMgr.GetBarrier() > 0)
+        {
+            playerBarrierUI.SetActive(true);
+        }
+        else
+        {
+            playerBarrierUI.SetActive(false);
         }
 
         CountSymbol();

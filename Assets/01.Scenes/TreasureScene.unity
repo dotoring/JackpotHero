@@ -1267,6 +1267,9 @@ MonoBehaviour:
   artifactNodePref: {fileID: 4572805585080363841, guid: f0730130b8bdda3439363a9cf66bb166, type: 3}
   ownArtifactGridLayout: {fileID: 199411918}
   artifactTooltipGO: {fileID: 1009372447}
+  playerHp: {fileID: 481610510}
+  playerBarrier: {fileID: 1878316106}
+  playerBarrierUI: {fileID: 2050888259}
 --- !u!4 &779508350
 Transform:
   m_ObjectHideFlags: 0
@@ -1417,6 +1420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scrollRect: {fileID: 916308574}
   content: {fileID: 2080492195}
+  items: []
   count: 1
 --- !u!114 &916308574
 MonoBehaviour:

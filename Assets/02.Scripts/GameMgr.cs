@@ -225,6 +225,11 @@ public class GameMgr : MonoBehaviour
         }
     }
 
+    public void ResetPlayerSymbol()
+    {
+        playerOwnSymbols.Clear();
+    }
+
     //게임 내 전체 심볼 리스트 get함수
     public List<Symbol> GetEntireSymbols()
     {

@@ -27,11 +27,6 @@ public class ShopMgr : MonoBehaviour
     public GameObject artifactSaleNodePref;
     public Transform artifactSaleLayout;
 
-    [Header("UI")]
-    public TextMeshProUGUI playerHp;
-    public TextMeshProUGUI playerBarrier;
-    public GameObject playerBarrierUI;
-
     void Start()
     {
         gameMgr = GameMgr.Instance;
@@ -71,17 +66,6 @@ public class ShopMgr : MonoBehaviour
     void Update()
     {
         discardPriceText.text = discardPrice.ToString();
-
-        playerHp.text = gameMgr.GetPlayerCurHP().ToString();
-        playerBarrier.text = gameMgr.GetBarrier().ToString();
-        if (gameMgr.GetBarrier() > 0)
-        {
-            playerBarrierUI.SetActive(true);
-        }
-        else
-        {
-            playerBarrierUI.SetActive(false);
-        }
 
         if (!ownSymbolsPanel.activeSelf)
         {

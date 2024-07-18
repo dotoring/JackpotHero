@@ -99,6 +99,11 @@ public abstract class Enemy : MonoBehaviour
         }
     }
 
+    public Dictionary<Condition, int> GetEnemyConditions()
+    {
+        return conditions;
+    }
+
     //상태 추가 함수
     public virtual void AddEnemyCondition(Condition condition, int val)
     {
